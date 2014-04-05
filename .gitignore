@@ -32,5 +32,6 @@
 # others
 *.iml
 /wrapper
+/wrapper/*.jar
 .classpath
 .project
