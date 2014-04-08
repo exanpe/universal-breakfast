@@ -30,7 +30,7 @@
 /target
 
 # others
-*.iml
+/*.iml
 /wrapper
 /wrapper/*.jar
 .classpath
