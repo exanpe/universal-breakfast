@@ -22,8 +22,6 @@ class Member {
     static constraints = {
         name nullable: false, blank: false, maxSize: 64
         mail nullable: true, blank: false, maxSize: 64
-        dateLastBreakfast nullable: true
-        dateCreation nullable: true
     }
 
 
