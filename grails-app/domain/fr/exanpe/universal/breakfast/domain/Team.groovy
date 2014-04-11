@@ -6,25 +6,28 @@ class Team {
 
     String username
     String password
+    // mail to contact team
+    String mail;
+
+    List<Member> members = [];
 
     Integer breakfastCount = 0
 
     Date dateCreation
-    Date lastForewarn
+    Date lastPreparation
+    Date lastValidation
 
     static constraints = {
         username blank: false, nullable: false, unique: true, maxSize: 32
         password blank: false, nullable: false
-        lastForewarn nullable: true
+        mail blank: false, nullable: false, maxSize: 64
         dateCreation nullable: true
+        lastPreparation nullable: true
+        lastValidation nullable: true
     }
 
     static namedQueries = {
-        findByUsername { name ->
-            ilike 'username' , name
-        }
-
-        findByUsernameCase { name ->
+        findByUsernameCI { name ->
             eq 'username' , name, ignoreCase : true
         }
     }

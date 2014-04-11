@@ -1,7 +1,6 @@
 package fr.exanpe.universal.breakfast.domain
 
 import grails.test.spock.IntegrationSpec
-import spock.lang.*
 
 /**
  *
@@ -14,12 +13,14 @@ class TeamIntegrationSpec extends IntegrationSpec {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test de la récupération par username case-insensitive"() {
         setup :
-        new Team(username: "uSer", password: "pass").save(flush : true, failOnError: true);
+        new Team(username: "uSer", password: "pass", mail: "test@mail.com").save(flush : true, failOnError: true);
 
         expect :
-        Team.findByUsername("UseR").list().size() == 1;
-        Team.findByUsernameCase("UseR").list().size() == 1;
+        Team.findByUsername("UseR") == null;
+        Team.findByUsername("uSer") != null;
+        Team.findByUsernameCI("UseR0").get() == null ;
+        Team.findByUsernameCI("UseR").get() != null;
     }
 }

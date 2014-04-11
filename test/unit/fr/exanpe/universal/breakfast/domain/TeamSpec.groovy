@@ -15,6 +15,16 @@ class TeamSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test validation"() {
+        expect :
+            new Team(map).validate() == res
+        where :
+
+        map                     |   res
+        [:]                      |   false
+        [username:"user"]       |   false
+        [username:"user", password : "password"]       |   false
+        [username:"user", password : "password", mail: "test@mail.com"]       |   true
+
     }
 }
