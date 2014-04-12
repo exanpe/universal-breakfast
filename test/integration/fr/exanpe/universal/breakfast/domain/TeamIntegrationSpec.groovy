@@ -15,7 +15,7 @@ class TeamIntegrationSpec extends IntegrationSpec {
 
     void "test de la récupération par username case-insensitive"() {
         setup :
-        new Team(username: "uSer", password: "pass", mail: "test@mail.com").save(flush : true, failOnError: true);
+        new Team(username: "uSer", password: "pass", mail: "test@mail.com").save(flush : true);
 
         expect :
         Team.findByUsername("UseR") == null;

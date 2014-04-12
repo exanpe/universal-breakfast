@@ -92,6 +92,7 @@ grails.hibernate.osiv.readonly = false
 grails.gorm.default.constraints = {
     '*'(nullable: true)
 }
+grails.gorm.failOnError = true
 
 environments {
     development {

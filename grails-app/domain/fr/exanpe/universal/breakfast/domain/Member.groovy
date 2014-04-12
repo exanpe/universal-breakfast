@@ -2,8 +2,6 @@ package fr.exanpe.universal.breakfast.domain
 
 class Member {
 
-    Integer id;
-
     String name;
     String mail;
 
@@ -19,9 +17,19 @@ class Member {
     Date dateLastBreakfast;
     Date dateCreation;
 
+    static belongsTo = [team: Team]
+
     static constraints = {
         name nullable: false, blank: false, maxSize: 64
         mail nullable: true, blank: false, maxSize: 64
+    }
+
+    static namedQueries = {
+        getListOrdered{ team ->
+            eq "team", team
+            order "scaleValue", "asc"
+            order "dateLastBreakfast", "asc"
+        }
     }
 
 
