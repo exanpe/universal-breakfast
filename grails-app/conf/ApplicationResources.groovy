@@ -1,5 +1,9 @@
 modules = {
+
     application {
-        resource url:'js/application.js'
+        dependsOn       'jquery'
+        resource url:   'js/plugins/respond.js'
+        resource url:   'js/plugins/scrolltopcontrol.js'
+        resource url:   'js/application.js'
     }
 }

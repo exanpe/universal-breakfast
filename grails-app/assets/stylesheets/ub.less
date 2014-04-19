@@ -1,7 +1,466 @@
 @import 'bootstrap.less';
 
-@brand-primary:         blue;
+/* Variables */
 
-.page-header {
+@brand-primary:         #c0392b;
+@font-size-middle:      ceil((@font-size-base * 1.7)); // ~24px
+@navbar-default-bg:     #c0392b;
+@btn-default-bg:        #e74c3c;
+@default-light-color:   #ecf0f1;
+@default-dark-color:    #423f5c;
+@footer-bg-color:       #2c3e50;
+
+/* Common Styles */
+
+* {
+  outline: 0!important;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'open_sansregular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding-top: 50px;
+  color:  @gray-dark;
+}
+
+a {
   color: @brand-primary;
+}
+
+a:hover, a:focus {
+  color: @link-hover-color;
+  text-decoration: none;
+}
+
+.placeholder {
+  color: @gray-light;
+}
+
+.container-int {
+  margin-bottom: 50px;
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+  font-family: 'open_sanslight';
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  font-family: 'open_sansregular';
+}
+
+h2.section-title {
+  margin: 0px 0 30px 0;
+  font-size: @font-size-middle;
+}
+
+h3.section-title {
+  margin: 0px 0 20px 0;
+  font-size: 20px;
+}
+
+p {
+  margin: 0 0 25px 0;
+  line-height: @line-height-computed;
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: 'ubfontfamily';
+  src: url('fonts/gloria-hallelujah/GloriaHallelujah.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansbold';
+  src: url('fonts/opensans/opensans-bold-webfont.eot');
+  src: url('fonts/opensans/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-bold-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-bold-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansbold_italic';
+  src: url('fonts/opensans/opensans-bolditalic-webfont.eot');
+  src: url('fonts/opensans/opensans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-bolditalic-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-bolditalic-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-bolditalic-webfont.svg#open_sansbold_italic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansitalic';
+  src: url('fonts/opensans/opensans-italic-webfont.eot');
+  src: url('fonts/opensans/opensans-italic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-italic-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-italic-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-italic-webfont.svg#open_sansitalic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sanslight';
+  src: url('fonts/opensans/opensans-light-webfont.eot');
+  src: url('fonts/opensans/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-light-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-light-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-light-webfont.svg#open_sanslight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sanslight_italic';
+  src: url('fonts/opensans/opensans-lightitalic-webfont.eot');
+  src: url('fonts/opensans/opensans-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-lightitalic-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-lightitalic-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-lightitalic-webfont.svg#open_sanslight_italic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('fonts/opensans/opensans-regular-webfont.eot');
+  src: url('fonts/opensans/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/opensans/opensans-regular-webfont.woff') format('woff'),
+  url('fonts/opensans/opensans-regular-webfont.ttf') format('truetype'),
+  url('fonts/opensans/opensans-regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Nav */
+
+.navbar {
+  margin: 0;
+  border: none;
+  border-bottom: 2px solid @navbar-default-bg;
+  border-radius: 0;
+}
+
+.navbar-inverse {
+  background-color: @btn-default-bg;
+  border-color: @navbar-default-bg;
+}
+
+.navbar-inverse .navbar-brand {
+  font-family: 'ubfontfamily';
+  font-size: @font-size-h2;
+  line-height: 40px;
+  color: #FFF;
+  padding: 0 15px;
+  margin: 8px 0 0px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+  padding: 18px 15px;
+  font-family: 'open_sansregular';
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #ffffff;
+  background-color: @navbar-default-bg;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: @navbar-default-bg;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: @navbar-default-bg;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: @navbar-default-bg;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: @navbar-default-bg;
+  outline: none;
+}
+
+/* Home page carousel */
+
+.carousel {
+  height: 630px;
+  background: @default-dark-color;
+}
+
+.carousel-caption {
+  left: 160px;
+  top: 60px;
+  text-align: left;
+
+  h2 {
+      font-family: 'ubfontfamily';
+      font-size: 38px;
+      line-height: 50px;
+      margin: 10px 0;
+  }
+
+  .button {
+      border: 2px solid white;
+      -webkit-border: 2px solid white;
+      -moz-border: 2px solid white;
+      padding: 10px 30px 10px 30px;
+      border-radius: 2px;
+      color: white;
+      font-family: 'open_sanslight';
+      font-size: 16px;
+      margin: 30px 20px 0 0;
+      display: inline-block;
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+  }
+
+  .button:hover{
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+.item, .active, .carousel-inner {
+  height: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: length;
+  background: url("../images/bg/jave-cafe-food-30144.jpg") no-repeat ;
+}
+
+.label-default {
+  background-color: @btn-default-bg;
+}
+
+/* Buttons */
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  outline: none;
+}
+
+.btn-lg {
+  padding: 10px 35px;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: @btn-default-bg;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary{
+  background-color: @brand-primary;
+}
+
+.btn-info {
+  background-color: @default-dark-color;
+}
+
+.btn-info:hover{
+  background-color: #95A5A6;
+}
+
+.input-group-btn:last-child > .btn {
+  padding: 7px 12px;
+}
+
+/* Page Sections */
+
+.section, .section-colored {
+  padding: 50px 0;
+}
+
+.section-colored {
+  background-color:  @default-light-color;
+}
+
+.section-colored.home {
+  background-color: @default-dark-color;
+}
+
+.section-colored.home h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.section-header {
+  background-color:  @default-light-color;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar h4{
+  margin: 0 0 25px 0;
+}
+
+.sidebar .tab-content {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  resize: none;
+  background: #FCFCFC;
+  border-color: #E4E4E2;
+}
+
+.form-control:focus{
+  border-color:  @btn-default-bg;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+.block-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  text-align: center;
+  font-size: 30px;
+  background:  @btn-default-bg;
+  color: #fff;
+  line-height: 70px;
+  margin: 0 auto;
+}
+
+.block-body h2 {
+  font-family: 'open_sanslight';
+  font-size: 19px;
+  text-align: center;
+}
+
+.block-body p {
+  text-align: center;
+  font-size: 13px;
+  color: #7F8C8D;
+}
+
+/* Footer Styles */
+
+.footer {
+  background: @footer-bg-color;
+  padding: 20px 0;
+  font-size: 12px;
+}
+
+.footer p {
+  color: #fff;
+  margin: 0;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer a:hover {
+  color: #7f8c8d;
+  text-decoration: none;
+}
+
+/* Scroll Top Control */
+
+#topcontrol {
+  background-color: #000;
+  padding: 5px 10px;
+  font-size: 28px;
+  line-height: 20px;
+  color: #9B9B9B;
+}
+
+/** Devices Styles */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+/* Devices Tablets  */
+
+@media (max-width: 991px) {
+  p.legal {
+    text-align: left;
+  }
+}
+
+
+/* Small devices Phones */
+
+@media (max-width: 767px) {
+
+  .carousel {
+    height: 380px;
+  }
+
+  .carousel-caption {
+    top: 4%;
+  }
+
+  .carousel-control.left i, .carousel-control.right i {
+    top: 170px;
+  }
+
+  .section-colored.home h2 {
+    margin-bottom: 30px;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #fff;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #149178;
+  }
+
+  h3.error-404{
+    font-size: 150px;
+  }
+
+  .sidebar{
+    margin-top: 30px;
+  }
+
+  .comment-content {
+    width: 65%;
+  }
+
 }
