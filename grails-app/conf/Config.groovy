@@ -97,6 +97,7 @@ grails.gorm.failOnError = true
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.plugin.springsecurity.debug.useFilter = true
     }
     production {
         grails.logging.jul.usebridge = false
@@ -108,9 +109,9 @@ environments {
 log4j = {
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -127,3 +128,23 @@ log4j = {
 
 // LESS compiler
 grails.assets.less.compiler = "less4j"
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'fr.exanpe.universal.breakfast.domain.Team'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'fr.exanpe.universal.breakfast.domain.TeamRole'
+grails.plugin.springsecurity.authority.className = 'fr.exanpe.universal.breakfast.domain.Role'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/manage'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/':                                ['permitAll'],
+        '/assets/**':                       ['permitAll'],
+        '/index':                           ['permitAll'],
+        '/index.gsp':                       ['permitAll'],
+        '/**/js/**':                        ['permitAll'],
+        '/**/css/**':                       ['permitAll'],
+        '/**/images/**':                    ['permitAll'],
+        '/**/favicon.ico':                  ['permitAll'],
+        '/**':                              ['ROLE_USER']
+]
+
+// Allow GET to trigger logout
+grails.plugin.springsecurity.logout.postOnly = false

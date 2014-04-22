@@ -21,11 +21,33 @@
 
 	</head>
 	<body>
-        
-        <section id="home"></section>
+
+        <!-- Nav bar -->
         <g:render template="/menu/nav" />
 
-		<g:layoutBody/>
+        <!-- Header title -->
+        <div class="section-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"><g:layoutTitle default="My Title"/></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container container-int">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+
+                    <g:if test='${flash.message}'>
+                        <div class='alert alert-danger'>${flash.message}</div>
+                    </g:if>
+
+		            <g:layoutBody/>
+                </div>
+            </div>
+        </div>
 
         <!-- Contact -->
         <div class="section-colored home" id="contact">

@@ -6,19 +6,24 @@ class Team {
     String password
     // mail to contact team
     String mail;
-
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
     List<Member> members = new ArrayList<Member>()
-
-    static hasMany = [members: Member]
-
     Integer breakfastCount = 0
-
     Date dateCreation
     Date lastPreparation
     Date lastValidation
 
+
+    transient springSecurityService
+
+    static hasMany = [members: Member]
+
     static mapping = {
         members cascade: 'all'
+        password column: '`password`'
     }
 
     static constraints = {
@@ -33,8 +38,22 @@ class Team {
         }
     }
 
-    def beforeInsert = {
+    Set<Role> getAuthorities() {
+        TeamRole.findAllByTeam(this).collect { it.role } as Set
+    }
+
+    def beforeInsert() {
+        encodePassword()
         dateCreation = new Date()
     }
 
+    def beforeUpdate() {
+        if (isDirty('password')) {
+            encodePassword()
+        }
+    }
+
+    protected void encodePassword() {
+        password = springSecurityService.encodePassword(password)
+    }
 }
