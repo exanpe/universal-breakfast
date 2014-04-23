@@ -7,7 +7,11 @@
 </head>
 <body>
 
-    <div>Placeholder...</div>
+    <blockquote>
+        <p>This page is used to bla bla bla ....</p>
+    </blockquote>
+
+    <p>Content of the page....</p>
 
 </body>
 </html>

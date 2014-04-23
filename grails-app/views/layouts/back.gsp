@@ -36,9 +36,17 @@
             </div>
         </div>
 
-        <div class="container container-int">
+        <div class="main">
+
             <div class="row">
-                <div class="col-md-12 col-sm-12">
+
+                <!-- Left Sidebar -->
+                <div class="col-md-3 col-sm-3 sidebar">
+                    <g:render template="/menu/sidebar" />
+                </div>
+
+                <!-- Main content -->
+                <div class="col-md-9 col-sm-9">
 
                     <g:if test='${flash.message}'>
                         <div class='alert alert-danger'>${flash.message}</div>
@@ -46,31 +54,12 @@
 
 		            <g:layoutBody/>
                 </div>
-            </div>
-        </div>
 
-        <!-- Contact -->
-        <div class="section-colored home" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-sm-8">
-                        <h2>One question, one bug or simply get In touch ?</h2>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <a href="#" class="btn btn-danger btn-lg">Contact us</a>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- Footer -->
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <p class="col-md-10">©2014 Exanpe.</p>
-                </div>
-            </div>
-        </div>
+        <g:render template="/menu/footer" />
 
         <r:layoutResources />
 	</body>
