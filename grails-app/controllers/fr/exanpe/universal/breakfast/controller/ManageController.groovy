@@ -2,5 +2,9 @@ package fr.exanpe.universal.breakfast.controller
 
 class ManageController {
 
-    def index() { }
+    def manage() { }
+
+    def timetoeat() { }
+
+    def validation() { }
 }

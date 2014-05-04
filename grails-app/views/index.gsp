@@ -11,8 +11,8 @@
                     <div class="fill"></div>
                     <div class="carousel-caption">
                         <h2>Your Collaborative Breakfast</h2>
-                        <g:link controller="login" action="index" class="button">LOGIN</g:link>
-                        <a href="#" class="button">REGISTER</a>
+                        <g:link controller="login" action="index" class="button"><g:message code="ub.home.login.label" /></g:link>
+                        <g:link controller="register" action="index" class="button"><g:message code="ub.home.register.label" /> </g:link>
                     </div>
                 </div>
             </div>

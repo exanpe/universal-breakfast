@@ -133,18 +133,32 @@ grails.assets.less.compiler = "less4j"
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'fr.exanpe.universal.breakfast.domain.Team'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'fr.exanpe.universal.breakfast.domain.TeamRole'
 grails.plugin.springsecurity.authority.className = 'fr.exanpe.universal.breakfast.domain.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/manage'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/manage/timetoeat'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                                ['permitAll'],
         '/assets/**':                       ['permitAll'],
         '/index':                           ['permitAll'],
-        '/index.gsp':                       ['permitAll'],
+        '/home/**':                         ['permitAll'],
         '/**/js/**':                        ['permitAll'],
         '/**/css/**':                       ['permitAll'],
         '/**/images/**':                    ['permitAll'],
         '/**/favicon.ico':                  ['permitAll'],
+        '/simpleCaptcha/**':                ['permitAll'],
+        '/register/**':                     ['permitAll'],
+        '/manage/**':                       ['ROLE_USER'],
         '/**':                              ['ROLE_USER']
 ]
 
 // Allow GET to trigger logout
 grails.plugin.springsecurity.logout.postOnly = false
+
+// Simple Captcha conf
+simpleCaptcha {
+    // Font size used in CAPTCHA images
+    fontSize = 18
+    height = 200
+    width = 200
+
+    // Number of characters in CAPTCHA text
+    length = 6
+}

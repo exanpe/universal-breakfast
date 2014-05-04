@@ -68,5 +68,8 @@ grails.project.dependency.resolution = {
 
         // Spring plugins
         compile ":spring-security-core:2.0-RC2"
+
+        // Captcha
+        compile ":simple-captcha:0.9.9"
     }
 }

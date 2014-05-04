@@ -16,7 +16,6 @@ class Team {
     Date lastPreparation
     Date lastValidation
 
-
     transient springSecurityService
 
     static hasMany = [members: Member]

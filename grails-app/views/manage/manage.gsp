@@ -8,7 +8,7 @@
 <body>
 
     <blockquote>
-        <p>This page is used to bla bla bla ....</p>
+        <p><g:message code="ub.manage.help" /></p>
     </blockquote>
 
     <p>Content of the page....</p>

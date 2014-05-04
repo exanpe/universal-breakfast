@@ -20,7 +20,7 @@
 		<r:layoutResources />
 
 	</head>
-	<body>
+	<body class="back">
 
         <!-- Nav bar -->
         <g:render template="/menu/nav" />
@@ -46,7 +46,7 @@
                 </div>
 
                 <!-- Main content -->
-                <div class="col-md-9 col-sm-9">
+                <div class="content col-md-9 col-sm-9">
 
                     <g:if test='${flash.message}'>
                         <div class='alert alert-danger'>${flash.message}</div>
