@@ -6,7 +6,7 @@ class Team {
     String password
     // mail to contact team
     String mail;
-    boolean enabled = true
+    boolean enabled = false
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
