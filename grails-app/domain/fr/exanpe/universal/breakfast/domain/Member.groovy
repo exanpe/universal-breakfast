@@ -17,6 +17,8 @@ class Member {
     Date dateLastBreakfast;
     Date dateCreation;
 
+    Boolean active = true;
+
     static belongsTo = [team: Team]
 
     static constraints = {

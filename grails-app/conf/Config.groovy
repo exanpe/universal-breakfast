@@ -11,7 +11,7 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
+grails.project.groupId = "fr.exanpe" // change this to alter the default package name and Maven publishing destination
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
@@ -124,6 +124,7 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+   // debug    'org.springframework.security'
 }
 
 // LESS compiler
@@ -133,7 +134,7 @@ grails.assets.less.compiler = "less4j"
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'fr.exanpe.universal.breakfast.domain.Team'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'fr.exanpe.universal.breakfast.domain.TeamRole'
 grails.plugin.springsecurity.authority.className = 'fr.exanpe.universal.breakfast.domain.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/manage/timetoeat'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/route'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                                ['permitAll'],
         '/assets/**':                       ['permitAll'],
@@ -145,8 +146,15 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/favicon.ico':                  ['permitAll'],
         '/simpleCaptcha/**':                ['permitAll'],
         '/register/**':                     ['permitAll'],
-        '/manage/**':                       ['ROLE_USER'],
-        '/**':                              ['ROLE_USER']
+        '/planning/**':                      ['permitAll'],//planning
+        //user URL
+        '/complete/**':                      ['ROLE_USER'],
+        '/getTogether/**':                   ['ROLE_USER'],
+        '/manage/**':                        ['ROLE_USER'],
+        '/prepare/**':                       ['ROLE_USER'],
+        '/route/**':                         ['ROLE_USER'],
+        //admin URL
+        '/**':                               ['ROLE_ADMIN']
 ]
 
 // Allow GET to trigger logout
@@ -161,4 +169,7 @@ simpleCaptcha {
 
     // Number of characters in CAPTCHA text
     length = 6
+
+    //no session if not loggued
+    storeInSession = false
 }

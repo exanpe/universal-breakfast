@@ -13,5 +13,8 @@
 
     <p>Content of the page....</p>
 
+    TODO : Search and CRUD member with table<br/>
+    Add : activate or deactivate of member !
+
 </body>
 </html>

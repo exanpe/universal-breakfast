@@ -3,12 +3,12 @@
 <html>
 <head>
     <meta name="layout" content="back" />
-    <title><g:message code="ub.timetoeat.title" /></title>
+    <title><g:message code="ub.prepare.title" /></title>
 </head>
 <body>
 
 <blockquote>
-    <p><g:message code="ub.timetoeat.help" /></p>
+    <p><g:message code="ub.prepare.help" /></p>
 </blockquote>
 
 <p>Content of the page....</p>
