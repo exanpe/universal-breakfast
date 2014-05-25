@@ -12,11 +12,15 @@
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-		<g:layoutHead/>
+		<g:layoutHead />
         <asset:stylesheet src="font-awesome.min.css" />
         <asset:stylesheet src="ub.less" />
 
-		<g:javascript library="application" />
+        <asset:javascript src="jquery.js" />
+        <asset:javascript src="bootstrap.js" />
+        <asset:javascript src="plugins/respond.js" />
+        <asset:javascript src="plugins/scrolltopcontrol.js" />
+        <asset:javascript src="ub.js" />
 		<r:layoutResources />
 
 	</head>

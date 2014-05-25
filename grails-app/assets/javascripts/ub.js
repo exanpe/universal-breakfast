@@ -1,10 +1,10 @@
 if (typeof jQuery !== 'undefined') {
-	(function($) {
-		$('#spinner').ajaxStart(function() {
-			$(this).fadeIn();
-		}).ajaxStop(function() {
-			$(this).fadeOut();
-		});
+    (function($) {
+        $('#spinner').ajaxStart(function() {
+            $(this).fadeIn();
+        }).ajaxStop(function() {
+            $(this).fadeOut();
+        });
 
         // Scroll on Navbar link click
         $(".navbar a[href^='#']").click(function (evt) {
@@ -14,5 +14,5 @@ if (typeof jQuery !== 'undefined') {
                 $("body,html").animate({ scrollTop: scrollToElm.offset().top }, 500);
             }
         });
-	})(jQuery);
+    })(jQuery);
 }
