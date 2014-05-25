@@ -35,3 +35,4 @@
 /wrapper/*.jar
 .classpath
 .project
+*.iml
