@@ -3,14 +3,19 @@ package fr.exanpe.universal.breakfast.domain
 class History {
 
     Date date
-    String memberName
-    Integer attendees
+    String providers
+    Integer numAttendees
 
     static belongsTo = [team:Team]
 
     static constraints = {
-        attendees nullable: false
-        memberName nullable: false
+        providers nullable: false
+        numAttendees nullable: false
         date nullable: false
+        team nullable: false
+    }
+
+    def beforeInsert = {
+        date.clearTime();
     }
 }

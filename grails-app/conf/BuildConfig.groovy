@@ -7,6 +7,8 @@ grails.project.target.level = 1.7
 grails.project.source.level = 1.7
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
+grails.reload.enabled = true
+
 grails.project.fork = [
     test: false,
     run: false

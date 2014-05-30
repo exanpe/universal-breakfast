@@ -1,8 +1,4 @@
-import fr.exanpe.universal.breakfast.domain.Member
-import fr.exanpe.universal.breakfast.domain.Role
-import fr.exanpe.universal.breakfast.domain.Team
-import fr.exanpe.universal.breakfast.domain.TeamRole
-import fr.exanpe.universal.breakfast.domain.TeamRole
+import fr.exanpe.universal.breakfast.domain.*
 import grails.util.Environment
 
 class BootStrap {
@@ -23,6 +19,10 @@ class BootStrap {
             team.members << mem2
 
             team.save(flush : true)
+
+            for(i in 1..43)
+                new History(team: team, providers: "Andrew", date: new Date().minus(i*2), numAttendees: new Random().nextInt(i)).save(flush:true)
+
 
             def newteam = new Team(username: 'newteam', password: 'te.am', mail: 'newteam@universal-breakfast.com').save(flush: true)
             TeamRole.create(newteam, roleUser, true)
