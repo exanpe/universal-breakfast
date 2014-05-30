@@ -67,7 +67,7 @@ grails.project.dependency.resolution = {
         runtime ':twitter-bootstrap:3.1.1.3'
 
         // Spring plugins
-        compile ":spring-security-core:2.0-RC2"
+        compile ":spring-security-core:2.0-RC3"
 
         // Captcha
         compile ":simple-captcha:0.9.9"

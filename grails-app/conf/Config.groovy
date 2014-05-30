@@ -98,10 +98,17 @@ environments {
     development {
         grails.logging.jul.usebridge = true
         grails.plugin.springsecurity.debug.useFilter = true
+
+        // Session monitoring conf
+        ub.session.max.count = 5
     }
+
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+
+        // Session monitoring conf
+        ub.session.max.count = 50
     }
 }
 
@@ -159,6 +166,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 // Allow GET to trigger logout
 grails.plugin.springsecurity.logout.postOnly = false
+
+// Enable event publishing
+grails.plugin.springsecurity.useSecurityEventListener = true
 
 // Simple Captcha conf
 simpleCaptcha {
