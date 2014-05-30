@@ -15,9 +15,12 @@ class Member {
     Integer absentCount = 0;
 
     Date dateLastBreakfast;
-    Date dateCreation;
 
     Boolean active = true;
+
+    //standard grails
+    Date dateCreated
+    Date lastUpdated
 
     static belongsTo = [team: Team]
 
@@ -32,11 +35,6 @@ class Member {
             order "scaleValue", "asc"
             order "dateLastBreakfast", "asc"
         }
-    }
-
-
-    def beforeInsert = {
-        dateCreation = new Date()
     }
 
 }

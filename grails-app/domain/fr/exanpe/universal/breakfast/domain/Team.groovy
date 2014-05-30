@@ -11,10 +11,14 @@ class Team {
     boolean accountLocked
     boolean passwordExpired
     List<Member> members = new ArrayList<Member>()
+    List<Member> history = new ArrayList<History>()
     Integer breakfastCount = 0
-    Date dateCreation
     Date lastPreparation
     Date lastValidation
+
+    //standard grails
+    Date dateCreated
+    Date lastUpdated
 
     transient springSecurityService
 
@@ -22,6 +26,7 @@ class Team {
 
     static mapping = {
         members cascade: 'all'
+        history cascade : 'all'
         password column: '`password`'
     }
 
@@ -43,7 +48,6 @@ class Team {
 
     def beforeInsert() {
         encodePassword()
-        dateCreation = new Date()
     }
 
     def beforeUpdate() {

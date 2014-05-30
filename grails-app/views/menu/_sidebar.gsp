@@ -11,8 +11,8 @@
         <h4>Team</h4>
         <ul class="nav">
             <li><g:link controller="manage"><g:message code="ub.manage.sidebar.label"/></g:link></li>
-            <li><g:link controller="manage">TODO manage account</g:link></li>
-            <li><g:link controller="manage">TODO Breakfast history</g:link></li>
+            <li><g:link controller="account"><g:message code="ub.account.sidebar.label"/></g:link></li>
+            <li><g:link controller="history"><g:message code="ub.history.sidebar.label"/></g:link></li>
         </ul>
     </div>
 </sec:ifLoggedIn>
