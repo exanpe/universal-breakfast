@@ -12,6 +12,7 @@ class Team {
     boolean passwordExpired
     List<Member> members = new ArrayList<Member>()
     List<Member> history = new ArrayList<History>()
+    Configuration configuration
     Integer breakfastCount = 0
     Date lastPreparation
     Date lastValidation
@@ -22,14 +23,21 @@ class Team {
 
     transient springSecurityService
 
+    public Team(){
+        configuration = new Configuration();
+    }
+
     static hasMany = [
         members: Member,
-        history: History,
+        history: History
     ]
+
+    static fetchMode = [configuration: 'eager']
 
     static mapping = {
         members cascade: 'all-delete-orphan'
         history cascade : 'all-delete-orphan'
+        configuration cascade : 'all-delete-orphan'
         password column: '`password`'
     }
 
