@@ -12,7 +12,7 @@ class HistoryController {
         List<History> list = null;
 
         if(total > 0){
-            list = historyService.list(params.offset?:0);
+            list = historyService.list(params.offset?params.offset.toInteger():0);
         }
 
         return [total : total, histories : list]
@@ -20,5 +20,6 @@ class HistoryController {
 
     def clear() {
         historyService.clear();
+        redirect(action : "index")
     }
 }

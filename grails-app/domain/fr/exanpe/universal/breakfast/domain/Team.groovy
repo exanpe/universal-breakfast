@@ -22,11 +22,14 @@ class Team {
 
     transient springSecurityService
 
-    static hasMany = [members: Member]
+    static hasMany = [
+        members: Member,
+        history: History,
+    ]
 
     static mapping = {
-        members cascade: 'all'
-        history cascade : 'all'
+        members cascade: 'all-delete-orphan'
+        history cascade : 'all-delete-orphan'
         password column: '`password`'
     }
 

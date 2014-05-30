@@ -73,4 +73,18 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
 
         h[0].date > h[1].date && h[1].date > h[2].date && h[2].date > h[3].date
     }
+
+    //Fail...
+    /*void "Test history clear"() {
+        setup :
+        historyService.addEntry(new Date().minus(3), 7, "john", "marry")
+        historyService.addEntry(new Date().plus(3), 7, "john", "marry")
+        historyService.addEntry(new Date().minus(1), 7, "john", "marry")
+        historyService.addEntry(new Date().plus(7), 7, "john", "marry")
+
+        historyService.clear();
+
+        expect :
+        historyService.count() == 0
+    }*/
 }

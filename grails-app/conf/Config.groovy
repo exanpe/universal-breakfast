@@ -94,6 +94,9 @@ grails.gorm.default.constraints = {
 }
 grails.gorm.failOnError = true
 
+ub.history.perPage=10
+grails.plugins.twitterbootstrap.fixtaglib = true
+
 environments {
     development {
         grails.logging.jul.usebridge = true
