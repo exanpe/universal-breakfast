@@ -16,6 +16,7 @@ class Team {
     Integer breakfastCount = 0
     Date lastPreparation
     Date lastValidation
+    Date lastConnection
 
     //standard grails
     Date dateCreated
@@ -39,6 +40,9 @@ class Team {
         history cascade : 'all-delete-orphan'
         configuration cascade : 'all-delete-orphan'
         password column: '`password`'
+        lastConnection type : 'timestamp'
+        lastPreparation type : 'date'
+        lastValidation type : 'date'
     }
 
     static constraints = {
