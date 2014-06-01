@@ -94,6 +94,8 @@ grails.gorm.default.constraints = {
 }
 grails.gorm.failOnError = true
 
+grails.databinding.dateFormats = ['MM-dd-yyyy', 'dd/MM/yyyy']
+
 ub.history.perPage=10
 grails.plugins.twitterbootstrap.fixtaglib = true
 

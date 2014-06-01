@@ -42,7 +42,7 @@
             <tr>
                 <td>${total - ((int)params.offset?params.offset.toInteger():0)-i}</td>
                 <td><g:formatDate date="${h.date}"/></td>
-                <td>${h.providers}</td>
+                <td>${h.suppliers}</td>
                 <td>${h.numAttendees}</td>
             </tr>
         </g:each>

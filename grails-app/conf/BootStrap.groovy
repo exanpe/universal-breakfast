@@ -21,7 +21,7 @@ class BootStrap {
             team.save(flush : true)
 
             for(i in 1..43)
-                new History(team: team, providers: "Andrew", date: new Date().minus(i*2), numAttendees: new Random().nextInt(i)).save(flush:true)
+                new History(team: team, suppliers: "Andrew", date: new Date().minus(i*2), numAttendees: new Random().nextInt(i)).save(flush:true)
 
 
             def newteam = new Team(username: 'newteam', password: 'te.am', mail: 'newteam@universal-breakfast.com').save(flush: true)

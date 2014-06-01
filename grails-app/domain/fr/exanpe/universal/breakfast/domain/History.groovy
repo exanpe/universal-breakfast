@@ -3,13 +3,13 @@ package fr.exanpe.universal.breakfast.domain
 class History {
 
     Date date
-    String providers
+    String suppliers
     Integer numAttendees
 
     static belongsTo = [team:Team]
 
     static constraints = {
-        providers nullable: false
+        suppliers nullable: false
         numAttendees nullable: false
         date nullable: false
         team nullable: false

@@ -18,6 +18,7 @@
 
         <asset:javascript src="jquery.js" />
         <asset:javascript src="bootstrap.js" />
+        <asset:javascript src="bootstrap.js" />
         <asset:javascript src="plugins/respond.js" />
         <asset:javascript src="plugins/scrolltopcontrol.js" />
         <asset:javascript src="ub.js" />

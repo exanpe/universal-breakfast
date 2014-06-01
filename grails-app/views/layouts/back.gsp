@@ -14,10 +14,15 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<g:layoutHead/>
         <asset:stylesheet src="font-awesome.min.css" />
+        <asset:stylesheet src="bootstrap-datetimepicker/datetimepicker.css" />
+        <asset:stylesheet src="jquery-checkbox-radio/red.css" />
         <asset:stylesheet src="ub.less" />
 
         <asset:javascript src="jquery.js" />
         <asset:javascript src="bootstrap.js" />
+        <asset:javascript src="bootstrap-datetimepicker/moment.js" />
+        <asset:javascript src="bootstrap-datetimepicker/datetimepicker.js" />
+        <asset:javascript src="jquery-checkbox-radio/icheck.min.js" />
         <asset:javascript src="plugins/respond.js" />
         <asset:javascript src="plugins/scrolltopcontrol.js" />
         <asset:javascript src="ub.js" />

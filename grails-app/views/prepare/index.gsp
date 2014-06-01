@@ -11,7 +11,67 @@
     <p><g:message code="ub.prepare.help" /></p>
 </blockquote>
 
-<p>Content of the page....</p>
+<div class="prepare">
+    <g:hasErrors bean="${command}">
+        <div class="alert alert-danger">
+            <ul>
+                <g:renderErrors bean="${command}" />
+            </ul>
+        </div>
+    </g:hasErrors>
+
+    <g:form class="form-horizontal" controller="prepare" action="prepare">
+        <div class="form-group">
+            <label for="date" class="control-label col-xs-4">
+                <g:message code="ub.prepare.date.label"/>
+            </label>
+            <div class="col-xs-2 input-group">
+                <g:textField name="date" class="form-control date-marker" value="${params?.date}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date" class="control-label col-xs-4">
+                <g:message code="ub.prepare.suppliers.label"/>
+            </label>
+            <div class="col-xs-8 input-group">
+                <g:each in="${members}" var="member" status="i">
+                    <div class="checkbox">
+                        <label for="supplier_${i}">
+                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${params["supplier_"+i]}"/>
+                            ${member.name}
+                        </label>
+                    </div>
+                </g:each>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date" class="control-label col-xs-4">
+                <g:message code="ub.prepare.message.label"/>
+            </label>
+            <div class="col-xs-8 input-group">
+                <g:textArea name="message" class="form-control" value="${params?.message}"/>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                $('input.icb').iCheck({
+                    checkboxClass: 'icheckbox_square-red',
+                    radioClass: 'iradio_square-red',
+                    increaseArea: '20%' // optional
+                });
+            });
+        </script>
+
+
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-xs-4">
+                <button type="submit" class="btn btn-primary"><g:message code="ub.register.button" /> </button>
+            </div>
+        </div>
+    </g:form>
+</div>
 
 </body>
 </html>

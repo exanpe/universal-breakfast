@@ -16,3 +16,19 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
+
+//if import
+if($.fn.datetimepicker){
+    $(document).ready(function(){
+        var yesterday = new Date();
+        yesterday.setDate(new Date().getDate() - 1)
+
+       $(".date-marker").datetimepicker(
+           {
+               pickTime : false,
+               //defaultDate : new Date(),
+               minDate : yesterday
+           }
+       );
+    });
+}

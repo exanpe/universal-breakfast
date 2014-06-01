@@ -51,7 +51,7 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
         def h = historyService.list()
 
         h.size() == 1
-        h[0].providers == "john,marry"
+        h[0].suppliers == "john,marry"
         h[0].numAttendees == 7
         h[0].date == new Date().minus(3).clearTime()
         h[0].team.id == team.id

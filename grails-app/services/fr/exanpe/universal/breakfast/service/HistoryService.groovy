@@ -10,10 +10,10 @@ class HistoryService {
     def springSecurityService
     def grailsApplication
 
-    def addEntry(Date date, Integer numAttendees, String... providers) {
+    def addEntry(Date date, Integer numAttendees, String... suppliers) {
         Team team = springSecurityService.currentUser
 
-        History h = new History(date: date, numAttendees : numAttendees, providers: providers.join(","), team: team)
+        History h = new History(date: date, numAttendees : numAttendees, suppliers: suppliers.join(","), team: team)
         h.save();
     }
 
