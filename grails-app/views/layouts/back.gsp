@@ -58,7 +58,9 @@
                 <div class="content col-md-9 col-sm-9">
 
                     <g:if test='${flash.message}'>
-                        <div class='alert alert-danger'>${flash.message}</div>
+                        <div class='alert alert-success'>
+                            <g:message code="${flash.message}" />
+                        </div>
                     </g:if>
 
 		            <g:layoutBody/>

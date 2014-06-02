@@ -17,6 +17,14 @@ class UbService {
         return team
     }
 
+    Team updateTeam(String username, Team newTeam) {
+        Team current = Team.findByUsername(username)
+        current.setPassword(newTeam.password)
+        current.setMail(newTeam.mail)
+        current.save()
+        return current
+    }
+
     void onConnection(){
         def t = Team.get(springSecurityService.currentUser.id)
         t.lastConnection = new Date();
