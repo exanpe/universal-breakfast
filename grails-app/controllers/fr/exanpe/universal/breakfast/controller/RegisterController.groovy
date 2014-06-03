@@ -41,7 +41,7 @@ class RegisterCommand {
 
     static constraints = {
         username blank: false, nullable: false, minSize: 4, maxSize: 32, validator: { value, obj ->
-            if (Team.findByUsername(value)) {
+            if (Team.findByUsernameCI(value).get()) {
                 return "ub.register.team.validator.exists"
             }
         }

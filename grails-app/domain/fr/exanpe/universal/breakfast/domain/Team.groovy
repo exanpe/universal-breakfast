@@ -62,6 +62,7 @@ class Team {
     }
 
     def beforeInsert() {
+        username = username?.toLowerCase()
         encodePassword()
     }
 

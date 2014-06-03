@@ -11,6 +11,7 @@ class UbService {
     def springSecurityService
 
     Team createTeam(Team team) {
+        def all = Role.findAll()
         def userRole = Role.findByAuthority('ROLE_USER')
         team.save()
         TeamRole.create(team, userRole, true)
@@ -18,7 +19,7 @@ class UbService {
     }
 
     Team updateTeam(String username, Team newTeam) {
-        Team current = Team.findByUsername(username)
+        Team current = Team.findByUsernameCI(username).get()
         current.setPassword(newTeam.password)
         current.setMail(newTeam.mail)
         current.save()

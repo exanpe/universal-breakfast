@@ -1,3 +1,4 @@
+import fr.exanpe.universal.breakfast.security.UbUserDetailsService
 import fr.exanpe.universal.breakfast.web.UbEventListener
 import fr.exanpe.universal.breakfast.web.UbSessionService
 import fr.exanpe.universal.breakfast.web.security.UbSuccessHandler
@@ -20,5 +21,9 @@ beans = {
         ajaxSuccessUrl = SpringSecurityUtils.securityConfig.successHandler.ajaxSuccessUrl // '/login/ajaxSuccess'
         useReferer = SpringSecurityUtils.securityConfig.successHandler.useReferer // false
         redirectStrategy = ref('redirectStrategy')
+    }
+
+    userDetailsService(UbUserDetailsService) {
+        grailsApplication = ref('grailsApplication')
     }
 }
