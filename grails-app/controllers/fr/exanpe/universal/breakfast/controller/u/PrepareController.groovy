@@ -7,9 +7,6 @@ class PrepareController {
     def springSecurityService
 
     def index(){
-        if(flash?.params)
-        params.putAll(flash.params)
-
         def members = Member.getListOrdered(springSecurityService.currentUser).list(max:20)//overflow protection
 
         return [members : members, command : flash?.command]
@@ -21,7 +18,6 @@ class PrepareController {
             command.errors.allErrors.each {
                 log.debug "error while validating PrepareCommand :" + it
             }
-            flash.params = params;
             flash.command = command;
             redirect(action : 'index')
             return
@@ -39,6 +35,10 @@ class PrepareCommand {
     //order Integer
     Integer[] suppliers
     String message
+
+    def has(def i){
+        return suppliers.find {it == i} != null
+    }
 
     static constraints = {
         date blank: false, nullable: false, min: new Date().clearTime()

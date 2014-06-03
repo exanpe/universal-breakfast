@@ -28,7 +28,7 @@
                     </ub:required>
                 </label>
             <div class="col-xs-2 input-group">
-                <g:textField name="date" class="form-control date-marker" value="${params?.date}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
+                <g:textField name="date" class="form-control date-marker" value="${command?.date?g.formatDate(date : command.date):''}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <g:each in="${members}" var="member" status="i">
                     <div class="checkbox">
                         <label for="supplier_${i}">
-                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${params?.suppliers?.indexOf(""+i) >= 0 ?'true':''}"/>
+                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
                             ${member.name}
                         </label>
                     </div>
@@ -54,7 +54,7 @@
                 <g:message code="ub.prepare.message.label"/>
             </label>
             <div class="col-xs-8 input-group">
-                <g:textArea name="message" class="form-control" value="${params?.message}"/>
+                <g:textArea name="message" class="form-control" value="${command?.message}"/>
             </div>
         </div>
 
