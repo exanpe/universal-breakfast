@@ -18,10 +18,8 @@ class PrepareController {
     def prepare(PrepareCommand command){
         if (command.hasErrors())
         {
-            println params.date
-
             command.errors.allErrors.each {
-                log.debug "error while saving User domain via PrepareCommand :" + it
+                log.debug "error while validating PrepareCommand :" + it
             }
             flash.params = params;
             flash.command = command;
@@ -44,11 +42,7 @@ class PrepareCommand {
 
     static constraints = {
         date blank: false, nullable: false, min: new Date().clearTime()
-        suppliers nullable: false, validator : {value, obj ->
-            if (value.size() == 0 || value[0] == null) {
-                return "prepareCommand.suppliers.nullable"
-            }
-        }
+        suppliers nullable: false
     }
 }
 
