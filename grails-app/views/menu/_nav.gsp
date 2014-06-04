@@ -16,7 +16,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </sec:ifNotLoggedIn>
                 <sec:ifLoggedIn>
-                    <li><a href="#"><sec:username/></a></li>
+                    <li><a href="#"><ub:teamName /></a></li>
                     <li><a href="${createLink(controller: 'logout')}"><i class="fa fa-power-off"></i></a></li>
                 </sec:ifLoggedIn>
             </ul>
