@@ -5,7 +5,13 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
             </button>
-            <a href="${createLinkTo(dir:'')}" class="navbar-brand">Universal Breakfast</a>
+            <a href="${createLinkTo(dir:'')}" class="navbar-brand">
+                <span id="logo" class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="logo-center fa fa-coffee fa-stack-1x"></i>
+                </span>
+                <g:message code="ub.name" />
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
