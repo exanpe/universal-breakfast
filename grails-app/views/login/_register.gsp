@@ -20,7 +20,7 @@
             <label for="mail" class="control-label col-xs-4">
                 <g:message code="ub.register.mail.label"/>
             </label>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 <g:field type="email" name="mail" class="form-control" value="${params?.mail}" />
             </div>
         </div>
