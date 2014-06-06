@@ -3,6 +3,7 @@ package fr.exanpe.universal.breakfast.domain
 class Team {
 
     String username
+    String teamName
     String password
     // mail to contact team
     String mail;
@@ -62,6 +63,7 @@ class Team {
     }
 
     def beforeInsert() {
+        teamName = username
         username = username?.toLowerCase()
         encodePassword()
     }

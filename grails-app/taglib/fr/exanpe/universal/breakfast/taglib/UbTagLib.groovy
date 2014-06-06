@@ -1,6 +1,12 @@
 package fr.exanpe.universal.breakfast.taglib
 
+import fr.exanpe.universal.breakfast.domain.Team
+import grails.plugin.springsecurity.SpringSecurityService
+
 class UbTagLib {
+
+    SpringSecurityService springSecurityService
+
     static namespace = "ub"
 
     static defaultEncodeAs = 'raw'
@@ -23,5 +29,10 @@ class UbTagLib {
 
         out << render(template: "/tpl/template_description",
                 model: ["props": props])
+    }
+
+    def teamName = { attrs ->
+        def team = springSecurityService?.currentUser as Team
+        out << "${team?.teamName}"
     }
 }
