@@ -1,12 +1,18 @@
+import fr.exanpe.universal.breakfast.config.TemplatesConfig
 import fr.exanpe.universal.breakfast.domain.*
 import grails.util.Environment
 
 class BootStrap {
 
+    def grailsApplication
+    def ubTemplateEngineService
+
     def init = { servletContext ->
 
         // Create ROLE_USER role if not exist
         def roleUser = addRole('ROLE_USER');
+
+        TemplatesConfig.initialize(grailsApplication.config, ubTemplateEngineService)
 
         if (Environment.current == Environment.DEVELOPMENT) {
             def team = new Team(username: 'TeAm', password: 'te.am', mail: 'team@universal-breakfast.com', enabled : true).save(flush: true)

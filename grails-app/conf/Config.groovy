@@ -1,3 +1,5 @@
+import grails.util.Holders
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -112,6 +114,18 @@ grails {
 }
 
 grails.mail.default.from = "exanpe@gmail.com"
+
+templates = {
+    props{
+        propGlobal id:"url", templateKey : "_URL_", script : {Holders.config.grails.serverURL}
+        propGlobal id:"teamname", templateKey : "_TEAM_NAME_", script : {Holders.grailsApplication.mainContext.springSecurityService.currentUser.username}
+        prop id:"breakfastdate", templateKey : "_BREAKFAST_DATE_", script : {(it && it["breakfastdate"])?it["breakfastdate"]:""}
+        prop id:"message", templateKey : "_MESSAGE_", script : {(it && it["message"])?it["message"]:""}
+        prop id:"location", templateKey : "_LOCATION_", script : {(it && it["location"])?it["location"]:""}
+    }
+
+    template id:"prepare", props : ["breakfastdate", "message"]
+}
 
 environments {
     development {

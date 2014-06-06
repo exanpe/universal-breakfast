@@ -76,7 +76,7 @@
         </div>
     </g:form>
 
-    <ub:templateDescription template="${fr.exanpe.universal.breakfast.service.TemplatesEnum.PREPARE}"/>
+    <ub:templateDescription template="prepare"/>
 </div>
 
 </body>

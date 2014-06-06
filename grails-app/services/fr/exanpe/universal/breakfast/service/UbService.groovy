@@ -56,16 +56,16 @@ class UbService {
 
         if(conf.sendMail){
             def model = [:]
-            model[PropEnum.BREAKFAST_DATE] = FastDateFormat.getInstance(Holders.applicationContext.getMessage("default.date.format", null, LocaleContextHolder.locale)).format(date)
-            model[PropEnum.MESSAGE] = message?:""
+            model["breakfastdate"] = FastDateFormat.getInstance(Holders.applicationContext.getMessage("default.date.format", null, LocaleContextHolder.locale)).format(date)
+            model["message"] = message?:""
 
             suppliers.retainAll({StringUtils.isNotEmpty(it.mail)})
             def mails = suppliers.collect {it.mail}
 
             mailService.sendMail {
                 to mails
-                subject ubTemplateEngineService.merge(TemplatesEnum.PREPARE, conf.prepareMailSubject, model)
-                html ubTemplateEngineService.merge(TemplatesEnum.PREPARE, conf.prepareMail, model)
+                subject ubTemplateEngineService.merge("prepare", conf.prepareMailSubject, model)
+                html ubTemplateEngineService.merge("prepare", conf.prepareMail, model)
             }
         }
 

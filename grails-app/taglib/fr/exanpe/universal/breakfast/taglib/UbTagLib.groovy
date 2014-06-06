@@ -26,7 +26,7 @@ class UbTagLib {
     }
 
     /**
-     * @attr template TemplatesEnum representing the template to display
+     * @attr template (String) the template to display
      */
     def templateDescription = {  attrs, body ->
 

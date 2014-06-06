@@ -4,6 +4,9 @@ package fr.exanpe.universal.breakfast.template
  * Created by jmaupoux on 04/06/14.
  */
 class TemplateProp {
+
+    String id
+
     /**
      * Key as filled in the template
      */
@@ -16,6 +19,6 @@ class TemplateProp {
 
     def getDescriptionMsgCode(){
 
-        return "ub.template."+templateKey.replaceAll("_", "").toLowerCase()+".description"
+        return "ub.template."+id+".description"
     }
 }
