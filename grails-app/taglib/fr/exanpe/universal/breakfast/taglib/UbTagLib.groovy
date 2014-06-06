@@ -20,6 +20,11 @@ class UbTagLib {
             )
     }
 
+    def teamName = { attrs ->
+        def team = springSecurityService?.currentUser as Team
+        out << "${team?.teamName}"
+    }
+
     /**
      * @attr template TemplatesEnum representing the template to display
      */
@@ -29,10 +34,5 @@ class UbTagLib {
 
         out << render(template: "/tpl/template_description",
                 model: ["props": props])
-    }
-
-    def teamName = { attrs ->
-        def team = springSecurityService?.currentUser as Team
-        out << "${team?.teamName}"
     }
 }
