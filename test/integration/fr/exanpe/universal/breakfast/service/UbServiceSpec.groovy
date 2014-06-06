@@ -1,13 +1,13 @@
 package fr.exanpe.universal.breakfast.service
 
-import grails.test.mixin.TestFor
-import spock.lang.Specification
+import grails.test.spock.IntegrationSpec
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(UbService)
-class UbServiceSpec extends Specification {
+class UbServiceSpec extends IntegrationSpec {
+
+    def ubService
 
     def setup() {
     }
@@ -15,6 +15,7 @@ class UbServiceSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test prepare"() {
+
     }
 }

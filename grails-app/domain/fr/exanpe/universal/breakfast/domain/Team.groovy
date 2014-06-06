@@ -25,7 +25,7 @@ class Team {
     transient springSecurityService
 
     public Team(){
-        configuration = new Configuration();
+        configuration = new Configuration()
     }
 
     static hasMany = [

@@ -73,5 +73,8 @@ grails.project.dependency.resolution = {
 
         // Captcha
         compile ":simple-captcha:0.9.9"
+
+        //Mail
+        compile ":mail:1.0.5"
     }
 }

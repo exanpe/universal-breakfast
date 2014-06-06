@@ -6,6 +6,8 @@ class PrepareController {
 
     def springSecurityService
 
+    def ubService
+
     def index(){
         def members = Member.getListOrdered(springSecurityService.currentUser).list(max:20)//overflow protection
 
@@ -22,10 +24,12 @@ class PrepareController {
             redirect(action : 'index')
             return
         }
-        else {
-            //TODO JMX
-        }
 
+        //TODO JMX manage exception with mail
+        ubService.prepare(command.date, command.suppliers, command.message);
+
+        flash.sent = 1
+        redirect(action : 'index')
     }
 }
 

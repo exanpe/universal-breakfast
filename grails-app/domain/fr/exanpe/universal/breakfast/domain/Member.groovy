@@ -22,6 +22,8 @@ class Member {
     Date dateCreated
     Date lastUpdated
 
+    Boolean preparing = false
+
     static belongsTo = [team: Team]
 
     static constraints = {

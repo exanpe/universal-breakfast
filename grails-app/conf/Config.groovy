@@ -99,6 +99,20 @@ grails.databinding.dateFormats = ['MM-dd-yyyy', 'dd/MM/yyyy']
 ub.history.perPage=10
 grails.plugins.twitterbootstrap.fixtaglib = true
 
+ub.template.mail.prepare = "mails/prepareMail.html"
+ub.template.mail.together = "mails/togetherMail.html"
+
+grails {
+    mail {
+        host = "localhost"
+        port = 25
+        username = "ultimate-breakfast@gmail.com"
+        password = ""
+    }
+}
+
+grails.mail.default.from = "exanpe@gmail.com"
+
 environments {
     development {
         grails.logging.jul.usebridge = true
@@ -106,6 +120,12 @@ environments {
 
         // Session monitoring conf
         ub.session.max.count = 5
+        grails.serverURL = "http://localhost:8080/universal-breakfast"
+    }
+
+    test{
+        grails.mail.disabled=true
+        grails.serverURL = "http://www.ub-test.com"
     }
 
     production {
@@ -114,6 +134,20 @@ environments {
 
         // Session monitoring conf
         ub.session.max.count = 50
+
+        grails {
+            mail {
+                host = "smtp.gmail.com"
+                port = 465
+                username = "exanpe@gmail.com"
+                password = "TODO"
+                props = ["mail.smtp.auth":"true",
+                        "mail.smtp.socketFactory.port":"465",
+                        "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                        "mail.smtp.socketFactory.fallback":"false"]
+
+            }
+        }
     }
 }
 

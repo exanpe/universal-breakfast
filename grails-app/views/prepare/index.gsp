@@ -20,6 +20,12 @@
         </div>
     </g:hasErrors>
 
+    <g:if test="${flash?.sent == 1}">
+        <div class="alert alert-success">
+            <g:message code="ub.prepare.success"/>
+        </div>
+    </g:if>
+
     <g:form class="form-horizontal" controller="prepare" action="prepare">
         <div class="form-group">
                 <label for="date" class="control-label col-xs-4">
@@ -75,6 +81,8 @@
             </div>
         </div>
     </g:form>
+
+    <ub:templateDescription template="${fr.exanpe.universal.breakfast.service.TemplatesEnum.PREPARE}"/>
 </div>
 
 </body>
