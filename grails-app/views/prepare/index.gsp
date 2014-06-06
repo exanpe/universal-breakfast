@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="fr.exanpe.universal.breakfast.domain.WorkflowState" contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +19,11 @@
             <g:message code="ub.prepare.success"/>
         </div>
     </g:if>
+    <g:elseif test="${team.workflowState == WorkflowState.PREPARE}">
+        <div class="alert alert-warning">
+            <g:message code="ub.prepare.already.warn" args="[g.formatDate(date : team.lastPreparation)]"/>
+        </div>
+    </g:elseif>
 
     <g:form class="form-horizontal" controller="prepare" action="prepare">
         <div class="form-group">

@@ -1,6 +1,7 @@
 package fr.exanpe.universal.breakfast.controller.u
 
 import fr.exanpe.universal.breakfast.domain.Member
+import fr.exanpe.universal.breakfast.domain.Team
 
 class PrepareController {
 
@@ -11,7 +12,10 @@ class PrepareController {
     def index(){
         def members = Member.getListOrdered(springSecurityService.currentUser).list(max:20)//overflow protection
 
-        return [members : members, command : flash?.command]
+        //fresh data
+        Team t = Team.get(springSecurityService.currentUser.id)
+
+        return [members : members, command : flash?.command, team : t]
     }
 
     def prepare(PrepareCommand command){

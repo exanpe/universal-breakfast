@@ -1,9 +1,6 @@
 package fr.exanpe.universal.breakfast.service
 
-import fr.exanpe.universal.breakfast.domain.Member
-import fr.exanpe.universal.breakfast.domain.Role
-import fr.exanpe.universal.breakfast.domain.Team
-import fr.exanpe.universal.breakfast.domain.TeamRole
+import fr.exanpe.universal.breakfast.domain.*
 import grails.transaction.Transactional
 import grails.util.Holders
 import org.apache.commons.lang.StringUtils
@@ -43,6 +40,7 @@ class UbService {
     def prepare(Date date, Integer[] suppliersIndexes, String message) {
         def t = Team.get(springSecurityService.currentUser.id)
         t.lastPreparation = new Date()
+        t.workflowState = WorkflowState.PREPARE
         t.save()
 
         //reset preparing
@@ -68,7 +66,6 @@ class UbService {
                 html ubTemplateEngineService.merge("prepare", conf.prepareMail, model)
             }
         }
-
     }
 
     List<Member> getMembersByIndex(Integer[] indexes){

@@ -13,6 +13,7 @@ class Team {
     boolean passwordExpired
     List<Member> members = new ArrayList<Member>()
     List<Member> history = new ArrayList<History>()
+    WorkflowState workflowState = WorkflowState.NEW
     Configuration configuration
     Integer breakfastCount = 0
     Date lastPreparation
@@ -77,4 +78,15 @@ class Team {
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
     }
+}
+
+enum WorkflowState {
+    //new creation
+    NEW,
+    //prepare sent
+    PREPARE,
+    //gather done
+    GATHER,
+    //complete done
+    COMPLETE
 }
