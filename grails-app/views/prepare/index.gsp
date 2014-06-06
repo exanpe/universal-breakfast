@@ -75,8 +75,6 @@
             </div>
         </div>
     </g:form>
-
-    <ub:templateDescription template="prepare"/>
 </div>
 
 </body>

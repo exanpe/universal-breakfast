@@ -27,6 +27,8 @@ class UbTagLib {
 
     /**
      * @attr template (String) the template to display
+     * Example : <ub:templateDescription template="prepare"/>
+     * @see Config class for template definition
      */
     def templateDescription = {  attrs, body ->
 
