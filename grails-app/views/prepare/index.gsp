@@ -12,13 +12,7 @@
 </blockquote>
 
 <div class="prepare">
-    <g:hasErrors bean="${command}">
-        <div class="alert alert-danger">
-            <ul>
-                <g:renderErrors bean="${command}" />
-            </ul>
-        </div>
-    </g:hasErrors>
+    <ub:errors obj="${command}"/>
 
     <g:if test="${flash?.sent == 1}">
         <div class="alert alert-success">

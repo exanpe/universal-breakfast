@@ -9,7 +9,7 @@ class BootStrap {
         def roleUser = addRole('ROLE_USER');
 
         if (Environment.current == Environment.DEVELOPMENT) {
-            def team = new Team(username: 'team', password: 'te.am', mail: 'team@universal-breakfast.com', enabled : true).save(flush: true)
+            def team = new Team(username: 'TeAm', password: 'te.am', mail: 'team@universal-breakfast.com', enabled : true).save(flush: true)
             TeamRole.create(team, roleUser, true)
 
             def mem = new Member(name : "Andrew", mail: "andrew@universal-breakfast.com")

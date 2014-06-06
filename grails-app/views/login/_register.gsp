@@ -1,11 +1,5 @@
 <div class="register">
-    <g:hasErrors bean="${command}">
-        <div class="alert alert-danger">
-            <ul>
-                <g:renderErrors bean="${command}" />
-            </ul>
-        </div>
-    </g:hasErrors>
+    <ub:errors obj="${command}"/>
 
     <g:form class="form-horizontal" controller="register" action="register">
         <div class="form-group">

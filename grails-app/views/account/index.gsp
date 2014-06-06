@@ -14,13 +14,7 @@
     <h2 class="section-title"><g:message code="ub.account.settings.title" /> </h2>
     <div>
 
-        <g:hasErrors bean="${command}">
-            <div class="alert alert-danger">
-                <ul>
-                    <g:renderErrors bean="${command}" />
-                </ul>
-            </div>
-        </g:hasErrors>
+        <ub:errors obj="${command}"/>
 
         <g:form class="form-horizontal" controller="account" action="update">
             <div class="form-group">

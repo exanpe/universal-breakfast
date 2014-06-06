@@ -35,4 +35,12 @@ class UbTagLib {
         out << render(template: "/tpl/template_description",
                 model: ["props": props])
     }
+
+    /**
+     * @attr obj the Validateable object holding errors
+     */
+    def errors = {attrs,  body ->
+        out << render(template: "/tpl/errors",
+                model: ["obj": attrs.obj])
+    }
 }
