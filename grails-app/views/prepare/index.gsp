@@ -47,8 +47,10 @@
                 <g:each in="${members}" var="member" status="i">
                     <div class="checkbox">
                         <label for="supplier_${i}">
-                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}" disabled="${member.active == false}"/>
-                            ${member.name}
+                            <g:if test="${member.active}">
+                                <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
+                                ${member.name}
+                            </g:if>
                         </label>
                     </div>
                 </g:each>
@@ -62,17 +64,6 @@
                 <g:textArea id="message" name="message" class="form-control" value="${command?.message}"/>
             </div>
         </div>
-
-        <script>
-            $(document).ready(function(){
-                $('input.icb').iCheck({
-                    checkboxClass: 'icheckbox_square-red',
-                    radioClass: 'iradio_square-red',
-                    increaseArea: '20%' // optional
-                });
-            });
-        </script>
-
 
         <div class="form-group">
             <div class="col-xs-offset-4 col-xs-4">
