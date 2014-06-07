@@ -2,6 +2,7 @@ package fr.exanpe.universal.breakfast.controller.u
 
 import fr.exanpe.universal.breakfast.domain.Member
 import fr.exanpe.universal.breakfast.domain.Team
+import grails.validation.Validateable
 
 class PrepareController {
 
@@ -37,7 +38,7 @@ class PrepareController {
     }
 }
 
-
+@Validateable
 class PrepareCommand {
     Date date
     //order Integer

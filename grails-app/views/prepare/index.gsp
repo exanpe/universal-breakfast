@@ -47,10 +47,8 @@
                 <g:each in="${members}" var="member" status="i">
                     <div class="checkbox">
                         <label for="supplier_${i}">
-                            <g:if test="${member.active}">
-                                <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
-                                ${member.name}
-                            </g:if>
+                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
+                            ${member.name}
                         </label>
                     </div>
                 </g:each>

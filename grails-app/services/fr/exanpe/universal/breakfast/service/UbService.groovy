@@ -48,7 +48,7 @@ class UbService {
 
 
         def suppliers = getMembersByIndex(suppliersIndexes)
-        Member.executeUpdate("UPDATE Member m set m.preparing = false where m in :suppliers", [suppliers:suppliers])
+        Member.executeUpdate("UPDATE Member m set m.preparing = true where m in :suppliers", [suppliers:suppliers])
 
         def conf = t.configuration;
 

@@ -32,3 +32,13 @@ if($.fn.datetimepicker){
        );
     });
 }
+
+if($.fn.iCheck){
+    $(document).ready(function(){
+        $('input.icb').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+            increaseArea: '20%' // optional
+        });
+    });
+}
