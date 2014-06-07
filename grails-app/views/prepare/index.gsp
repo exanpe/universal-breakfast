@@ -33,12 +33,12 @@
                     </ub:required>
                 </label>
             <div class="col-xs-2 input-group">
-                <g:textField name="date" class="form-control date-marker" value="${command?.date?g.formatDate(date : command.date):''}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
+                <g:textField id="date" name="date" class="form-control date-marker" value="${command?.date?g.formatDate(date : command.date):''}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="date" class="control-label col-xs-4">
+            <label for="suppliers" class="control-label col-xs-4">
                 <ub:required>
                     <g:message code="prepareCommand.suppliers.label"/>
                 </ub:required>
@@ -47,7 +47,7 @@
                 <g:each in="${members}" var="member" status="i">
                     <div class="checkbox">
                         <label for="supplier_${i}">
-                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
+                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}" disabled="${member.active == false}"/>
                             ${member.name}
                         </label>
                     </div>
@@ -55,11 +55,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="date" class="control-label col-xs-4">
+            <label for="message" class="control-label col-xs-4">
                 <g:message code="ub.prepare.message.label"/>
             </label>
             <div class="col-xs-8 input-group">
-                <g:textArea name="message" class="form-control" value="${command?.message}"/>
+                <g:textArea id="message" name="message" class="form-control" value="${command?.message}"/>
             </div>
         </div>
 

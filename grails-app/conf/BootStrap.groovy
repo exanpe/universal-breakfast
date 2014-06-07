@@ -20,9 +20,11 @@ class BootStrap {
 
             def mem = new Member(name : "Andrew", mail: "andrew@universal-breakfast.com")
             def mem2 = new Member(name : "Brian", mail: "brian@universal-breakfast.com")
+            def mem3 = new Member(name : "Jill", mail: "jill@universal-breakfast.com", active: false)
 
             team.members << mem
             team.members << mem2
+            team.members << mem3
 
             team.save(flush : true)
 
