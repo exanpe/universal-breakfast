@@ -125,6 +125,7 @@ templates = {
     }
 
     template id:"prepare", props : ["breakfastdate", "message"]
+    template id:"together", props : ["location", "message"]
 }
 
 environments {

@@ -4,11 +4,14 @@ import fr.exanpe.universal.breakfast.service.UbTemplateEngineService
 import fr.exanpe.universal.breakfast.template.TemplateDescriptor
 import fr.exanpe.universal.breakfast.template.TemplateProp
 import groovy.transform.CompileStatic
+import org.apache.log4j.Logger
 
 /**
  * Created by jmaupoux on 06/06/14.
  */
 class TemplatesConfig {
+
+    static final Logger LOG = Logger.getLogger(TemplatesConfig.class)
 
     ConfigObject config
     UbTemplateEngineService templateEngineService
@@ -24,6 +27,8 @@ class TemplatesConfig {
             return
         }
 
+        LOG.info("Initializing templates...")
+
         Object o = config.get("templates")
         TemplatesConfig templatesConfig = new TemplatesConfig(config, templateEngineService)
 
@@ -37,14 +42,17 @@ class TemplatesConfig {
     }
 
     def prop(Map map){
+        LOG.debug("Registering property ${map.id}")
         templateEngineService.registerProp(new TemplateProp(map));
     }
 
     def propGlobal(Map map){
+        LOG.debug("Registering global property ${map.id}")
         templateEngineService.registerProp(new TemplateProp(map), true);
     }
 
     def template(Map map){
+        LOG.info("Registering template ${map.id}")
         templateEngineService.register(new TemplateDescriptor(map))
     }
 
