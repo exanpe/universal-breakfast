@@ -35,8 +35,6 @@ class Team {
         history: History
     ]
 
-    static fetchMode = [configuration: 'eager']
-
     static mapping = {
         members cascade: 'all-delete-orphan'
         history cascade : 'all-delete-orphan'
