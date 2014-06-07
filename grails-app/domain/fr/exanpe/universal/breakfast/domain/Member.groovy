@@ -34,6 +34,7 @@ class Member {
     static namedQueries = {
         getListOrdered{ team ->
             eq "team", team
+            eq "active", true
             order "scaleValue", "asc"
             order "dateLastBreakfast", "asc"
         }
