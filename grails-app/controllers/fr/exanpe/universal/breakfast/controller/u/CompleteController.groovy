@@ -10,7 +10,7 @@ class CompleteController {
     def index(){
         def team = Team.get(springSecurityService.currentUser.id)
 
-        def members = Member.getListOrdered(team).list()
+        def members = Member.getListOrderedActive(team).list()
 
         def command = flash?.command
 

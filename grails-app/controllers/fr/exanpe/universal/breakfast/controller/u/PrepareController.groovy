@@ -11,7 +11,7 @@ class PrepareController {
     def ubService
 
     def index(){
-        def members = Member.getListOrdered(springSecurityService.currentUser).list(max:20)//overflow protection
+        def members = Member.getListOrderedActive(springSecurityService.currentUser).list(max:20)//overflow protection
 
         //fresh data
         Team t = Team.get(springSecurityService.currentUser.id)

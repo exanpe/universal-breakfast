@@ -70,7 +70,7 @@ class UbService {
 
     List<Member> getMembersByIndex(Integer[] indexes){
         def res = []
-        def members = Member.getListOrdered(springSecurityService.currentUser).list(max:20)
+        def members = Member.getListOrderedActive(springSecurityService.currentUser).list(max:20)
 
         indexes.each {
             res << members[it]//index in the
