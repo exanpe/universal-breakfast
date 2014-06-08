@@ -21,7 +21,7 @@
     </g:if>
     <g:elseif test="${team.workflowState == WorkflowState.PREPARE}">
         <div class="alert alert-warning">
-            <g:message code="ub.prepare.already.warn" args="[g.formatDate(date : team.lastPreparation)]"/>
+            <g:message code="ub.prepare.already.warn" args="[g.formatDate(date : team.lastPrepare)]"/>
         </div>
     </g:elseif>
 

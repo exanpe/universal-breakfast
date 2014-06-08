@@ -14,6 +14,7 @@ class UbService {
     def mailService
     def grailsApplication
     def ubTemplateEngineService
+    def historyService
 
     Team createTeam(Team team) {
         def all = Role.findAll()
@@ -37,9 +38,17 @@ class UbService {
         t.save()
     }
 
-    def prepare(Date date, Integer[] suppliersIndexes, String message) {
+    /**
+     * Prepare a breakfast
+     * @param date the breakfast date
+     * @param suppliers the members suppliers
+     * @param message an additionnal message
+     * @return
+     */
+    def prepare(Date date, List<Member> suppliers, String message) {
         def t = Team.get(springSecurityService.currentUser.id)
-        t.lastPreparation = new Date()
+        t.lastPrepare = new Date()
+        t.breakfastScheduledDate = date
         t.workflowState = WorkflowState.PREPARE
         t.save()
 
@@ -47,7 +56,7 @@ class UbService {
         Member.executeUpdate("UPDATE Member m set m.preparing = false");
 
 
-        def suppliers = getMembersByIndex(suppliersIndexes)
+
         Member.executeUpdate("UPDATE Member m set m.preparing = true where m in :suppliers", [suppliers:suppliers])
 
         def conf = t.configuration;
@@ -68,7 +77,12 @@ class UbService {
         }
     }
 
-    List<Member> getMembersByIndex(Integer[] indexes){
+    /**
+     * Get members according to their index in list Ordered
+     * @param indexes the indexes, starting from 0
+     * @return
+     */
+    List<Member> getMembersByIndex(List<Integer> indexes){
         def res = []
         def members = Member.getListOrderedActive(springSecurityService.currentUser).list(max:20)
 
@@ -107,5 +121,39 @@ class UbService {
                 html ubTemplateEngineService.merge("together", mail, model)
             }
         }
+    }
+
+    def complete(Date date, List<Member> suppliers, List<Member> attendees) {
+        def t = Team.get(springSecurityService.currentUser.id)
+        t.workflowState = WorkflowState.COMPLETE
+        t.breakfastScheduledDate = null
+        t.lastComplete = new Date()
+        t.lastPrepare = null
+        t.breakfastCount = t.breakfastCount + 1
+        t.save()
+
+        //reset preparing
+        Member.executeUpdate("UPDATE Member m set m.preparing = false");
+
+        //suppliers go on top
+        def suppliersScale = Member.withCriteria {
+            eq "team", t
+            projections {
+                max("scaleValue")
+            }
+        }[0] + 1
+
+        //attendees get attending +1
+        Member.executeUpdate("UPDATE Member m set m.attendingCount = (m.attendingCount+1) where m in :members", [members : attendees]);
+
+        //absents or inactive get scale +1 and absent countEntries +1
+        Member.executeUpdate("UPDATE Member m set m.scaleValue = (m.scaleValue+1), m.absenceCount = (m.absenceCount+1) where m not in (:members) and m.team = :team", [members : attendees, team : t]);
+
+        //suppliers get their new scale applied (in top of the stack)
+        // breakfastCount +1 and date updated
+        Member.executeUpdate("UPDATE Member m set m.scaleValue = :scale, m.lastBreakfast = :date, m.breakfastCount = (m.breakfastCount+1) where m in (:members)", [members : suppliers, date : date, scale : suppliersScale]);
+
+        //historize
+        historyService.addEntry(date, attendees.size(), suppliers.collect({it.name}) as String[])
     }
 }

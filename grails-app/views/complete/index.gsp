@@ -23,11 +23,23 @@
     </g:if>
     <g:elseif test="${team.workflowState == WorkflowState.COMPLETE}">
         <div class="alert alert-warning">
-            <g:message code="ub.complete.already.complete"/>
+            <g:message code="ub.complete.already.complete" args="[g.formatDate(date : team.lastComplete)]"/>
         </div>
     </g:elseif>
 
     <g:form class="form" controller="complete" action="complete">
+
+        <div class="form-group">
+            <label for="date" class="control-label col-xs-4">
+                <ub:required>
+                    <g:message code="completeCommand.date.label"/>
+                </ub:required>
+            </label>
+            <div class="col-xs-2 input-group">
+                <g:textField id="date" name="date" class="form-control date-marker" value="${command?.date?g.formatDate(date : command.date):''}" data-date-format="${g.message(code : 'default.date.format').toString().toUpperCase()}"/>
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-6">
@@ -57,7 +69,7 @@
                         <g:each in="${members}" var="member" status="i">
                             <div class="checkbox">
                                 <label for="attendees_${i}">
-                                    <g:checkBox id="attendees_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.hasAttendees(i)}"/>
+                                    <g:checkBox id="attendees_${i}" name="attendees" value="${i}" class="icb" checked="${command?.hasAttendees(i)}"/>
                                     ${member.name}
                                 </label>
                             </div>

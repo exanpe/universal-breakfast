@@ -30,8 +30,10 @@ class PrepareController {
             return
         }
 
+        def suppliers = ubService.getMembersByIndex(command.suppliers)
+
         //TODO JMX manage exception with mail
-        ubService.prepare(command.date, command.suppliers, command.message);
+        ubService.prepare(command.date, suppliers, command.message);
 
         flash.sent = 1
         redirect(action : 'index')

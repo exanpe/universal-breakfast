@@ -37,7 +37,7 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
 
     void "Test for a team without history"() {
         expect :
-        historyService.count() == 0
+        historyService.countEntries() == 0
         historyService.list().size() == 0
     }
 
@@ -46,7 +46,7 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
         historyService.addEntry(new Date().minus(3), 7, "john", "marry")
 
         expect :
-        historyService.count() == 1
+        historyService.countEntries() == 1
 
         def h = historyService.list()
 
@@ -65,7 +65,7 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
         historyService.addEntry(new Date().plus(7), 7, "john", "marry")
 
         expect :
-        historyService.count() == 4
+        historyService.countEntries() == 4
 
         def h = historyService.list()
 
@@ -74,17 +74,20 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
         h[0].date > h[1].date && h[1].date > h[2].date && h[2].date > h[3].date
     }
 
-    //Fail...
-    /*void "Test history clear"() {
+    /* fail, weird...
+    void "Test history clear"() {
         setup :
         historyService.addEntry(new Date().minus(3), 7, "john", "marry")
         historyService.addEntry(new Date().plus(3), 7, "john", "marry")
         historyService.addEntry(new Date().minus(1), 7, "john", "marry")
         historyService.addEntry(new Date().plus(7), 7, "john", "marry")
 
+        when :
         historyService.clear();
 
-        expect :
-        historyService.count() == 0
+        then :
+        History.withNewSession {
+            return historyService.countEntries() == 0
+        }
     }*/
 }

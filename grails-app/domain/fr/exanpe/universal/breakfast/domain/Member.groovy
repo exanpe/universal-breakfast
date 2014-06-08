@@ -9,12 +9,10 @@ class Member {
     Integer scaleValue = 0;
 
     Integer breakfastCount = 0
-    Integer homeMadeCount = 0
-
     Integer attendingCount = 0;
-    Integer absentCount = 0;
+    Integer absenceCount = 0;
 
-    Date dateLastBreakfast;
+    Date lastBreakfast;
 
     Boolean active = true;
 
@@ -31,17 +29,21 @@ class Member {
         mail nullable: true, blank: false, maxSize: 64
     }
 
+    static mapping = {
+        lastBreakfast type:'date'
+    }
+
     static namedQueries = {
         getListOrderedActive{ team ->
             eq "team", team
             eq "active", true
             order "scaleValue", "asc"
-            order "dateLastBreakfast", "asc"
+            order "lastBreakfast", "asc"
         }
         getListOrdered{ team ->
             eq "team", team
             order "scaleValue", "asc"
-            order "dateLastBreakfast", "asc"
+            order "lastBreakfast", "asc"
         }
     }
 

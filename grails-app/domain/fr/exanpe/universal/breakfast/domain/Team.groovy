@@ -15,9 +15,11 @@ class Team {
     List<Member> history = new ArrayList<History>()
     WorkflowState workflowState = WorkflowState.NEW
     Configuration configuration
+    Date breakfastScheduledDate//date selected on "prepare" step
+
     Integer breakfastCount = 0
-    Date lastPreparation
-    Date lastValidation
+    Date lastPrepare
+    Date lastComplete
     Date lastConnection
 
     //standard grails
@@ -41,8 +43,9 @@ class Team {
         configuration cascade : 'all-delete-orphan'
         password column: '`password`'
         lastConnection type : 'timestamp'
-        lastPreparation type : 'date'
-        lastValidation type : 'date'
+        breakfastScheduledDate type : 'date'
+        lastPrepare type : 'date'
+        lastComplete type : 'date'
     }
 
     static constraints = {

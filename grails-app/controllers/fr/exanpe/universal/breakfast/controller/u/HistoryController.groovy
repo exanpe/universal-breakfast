@@ -8,7 +8,7 @@ class HistoryController {
 
     def index() {
 
-        Integer total = historyService.count()
+        Integer total = historyService.countEntries()
         List<History> list = null;
 
         if(total > 0){

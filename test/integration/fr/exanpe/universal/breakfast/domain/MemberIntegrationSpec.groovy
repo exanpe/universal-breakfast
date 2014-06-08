@@ -16,12 +16,12 @@ class MemberIntegrationSpec extends IntegrationSpec {
     void "test de la récupération ordonnée par team"() {
         setup :
 
-        def mem1 = new Member(scaleValue: 3, name: "nom 1", dateLastBreakfast: new Date())
-        def mem2 = new Member(scaleValue: 1, name: "nom 2", dateLastBreakfast: new Date().next())
-        def mem3 = new Member(scaleValue: 2, name: "nom 3", dateLastBreakfast: new Date().next().next())
-        def mem4 = new Member(scaleValue: 2, name: "nom 4", dateLastBreakfast: new Date().next())
-        def mem5 = new Member(scaleValue: 2, name: "nom 5", dateLastBreakfast: new Date().next().next().next())
-        def mem6 = new Member(scaleValue: 2, name: "nom 6", dateLastBreakfast: new Date().next().next().next(), active: false)
+        def mem1 = new Member(scaleValue: 3, name: "nom 1", lastBreakfast: new Date())
+        def mem2 = new Member(scaleValue: 1, name: "nom 2", lastBreakfast: new Date().next())
+        def mem3 = new Member(scaleValue: 2, name: "nom 3", lastBreakfast: new Date().next().next())
+        def mem4 = new Member(scaleValue: 2, name: "nom 4", lastBreakfast: new Date().next())
+        def mem5 = new Member(scaleValue: 2, name: "nom 5", lastBreakfast: new Date().next().next().next())
+        def mem6 = new Member(scaleValue: 2, name: "nom 6", lastBreakfast: new Date().next().next().next(), active: false)
 
         def team = new Team(username: "uSer", password: "pass", mail: "test@mail.com");
         team.members << mem1

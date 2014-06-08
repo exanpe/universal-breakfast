@@ -7,6 +7,8 @@ class CompleteController {
 
     def springSecurityService
 
+    def ubService
+
     def index(){
         def team = Team.get(springSecurityService.currentUser.id)
 
@@ -15,21 +17,39 @@ class CompleteController {
         def command = flash?.command
 
         if(!command){
-            command = new CompleteCommand()
+            command = new CompleteCommand(date : team.breakfastScheduledDate)
+
             //auto fill checkboxes based on prepare
             members.eachWithIndex {m, idx ->
                 if(m.preparing){
                     command.suppliers.add(idx)
-                    command.attendees.add(idx)
                 }
+                //default : everyone is present
+                command.attendees.add(idx)
             }
         }
 
         [team : team, members : members, command : command]
     }
 
-    def complete(){
-        //TODO
+    def complete(CompleteCommand command){
+        if (command.hasErrors())
+        {
+            command.errors.allErrors.each {
+                log.debug "error while validating CompleteCommand :" + it
+            }
+            flash.command = command;
+            redirect(action : 'index')
+            return
+        }
+
+        def suppliers = ubService.getMembersByIndex(command.suppliers)
+        def attendees = ubService.getMembersByIndex(command.attendees)
+
+        ubService.complete(command.date, suppliers, attendees);
+
+        flash.complete = 1
+        redirect(action : 'index')
     }
 }
 
@@ -48,7 +68,7 @@ class CompleteCommand {
     }
 
     static constraints = {
-        date blank: false, nullable: false
+        date blank: false, nullable: false, max: new Date().clearTime().plus(1)
         suppliers nullable: false
         attendees nullable: false
     }

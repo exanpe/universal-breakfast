@@ -19,6 +19,7 @@ class ConfigurationSpec extends IntegrationSpec {
 
         expect :
         c.togetherMail != null
-        c.togetherMail.startsWith("<table>")
+        c.togetherMail.startsWith("Hi,<br/>")
+        c.togetherMailSubject.startsWith("[Universal-Breakfast]")
     }
 }
