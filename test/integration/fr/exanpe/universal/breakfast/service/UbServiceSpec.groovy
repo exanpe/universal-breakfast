@@ -2,6 +2,7 @@ package fr.exanpe.universal.breakfast.service
 
 import fr.exanpe.universal.breakfast.domain.Member
 import fr.exanpe.universal.breakfast.domain.Team
+import fr.exanpe.universal.breakfast.domain.WorkflowState
 import grails.plugin.mail.MailService
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.spock.IntegrationSpec
@@ -57,21 +58,26 @@ class UbServiceSpec extends IntegrationSpec {
     void "test prepare"() {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
-        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndex([1] as Integer[]), "")
+        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndex([1]), "")
 
         then :
         Member.withNewSession {
-            Member.findByName("nom 2").preparing == true
             Member.findByName("nom 1").preparing == false
         }
+        Member.withNewSession {
+            Member.findByName("nom 2").preparing == true
+        }
+
+        Team.get(1).lastPrepare.clearTime() == new Date().clearTime()
+        Team.get(1).workflowState == WorkflowState.PREPARE
     }
 
     void "test complete"() {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
         ubService.complete(new Date().minus(1),
-                ubService.getMembersByIndex([1] as Integer[]),
-                ubService.getMembersByIndex([0,1,2,4] as Integer[]))
+                ubService.getMembersByIndex([1]),
+                ubService.getMembersByIndex([0,1,2,4]))
 
         then :
         //nom 2 is supplier
@@ -95,5 +101,8 @@ class UbServiceSpec extends IntegrationSpec {
         Member.withNewSession {
             return Member.findByName("nom 1").scaleValue == 4
         }
+
+        Team.get(ubService.springSecurityService.currentUser.id).lastComplete.clearTime() == new Date().clearTime()
+        Team.get(ubService.springSecurityService.currentUser.id).workflowState == WorkflowState.COMPLETE
     }
 }

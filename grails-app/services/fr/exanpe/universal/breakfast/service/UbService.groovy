@@ -150,7 +150,7 @@ class UbService {
         Member.executeUpdate("UPDATE Member m set m.scaleValue = (m.scaleValue+1), m.absenceCount = (m.absenceCount+1) where m not in (:members) and m.team = :team", [members : attendees, team : t]);
 
         //suppliers get their new scale applied (in top of the stack)
-        // breakfastCount +1 and date updated
+        //breakfastCount +1 and last date updated
         Member.executeUpdate("UPDATE Member m set m.scaleValue = :scale, m.lastBreakfast = :date, m.breakfastCount = (m.breakfastCount+1) where m in (:members)", [members : suppliers, date : date, scale : suppliersScale]);
 
         //historize
