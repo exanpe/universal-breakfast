@@ -22,10 +22,23 @@ class RegisterController {
             return
         }
         else {
-            Team team = new Team(params)
-            ubService.createTeam(team)
+            Team team = ubService.createTeam(new Team(params))
+            ubService.askForAccountConfirmation(team.id)
+            flash.message = message(code: "ub.register.account.to.confirm", args: [team.teamName], default: '')
+            redirect controller: 'home', action: 'index'
+        }
+    }
+
+    def confirm(String token) {
+        Long teamId = Long.valueOf(params.id)
+        boolean valid = ubService.isAccountTokenValid(teamId, token);
+        if (valid) {
+            Team team = Team.get(teamId)
             springSecurityService.reauthenticate(team.username, team.password)
             redirect controller: 'login', action: 'auth'
+        }
+        else {
+            return ""
         }
     }
 }

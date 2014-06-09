@@ -7,6 +7,8 @@ import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.time.FastDateFormat
 import org.springframework.context.i18n.LocaleContextHolder
 
+import java.security.MessageDigest
+
 @Transactional
 class UbService {
 
@@ -155,5 +157,43 @@ class UbService {
 
         //historize
         historyService.addEntry(date, attendees.size(), suppliers.collect({it.name}) as String[])
+    }
+
+
+    def askForAccountConfirmation(Long teamId) {
+        def team = Team.get(teamId)
+        String token = getSecureToken(team.mail)
+
+        String url = Holders.grailsApplication.config.grails.serverURL + "/register/confirm/" + team.id + "?token=" + token
+        def mailSubject = Holders.applicationContext.getMessage("ub.register.account.confirmation.mail.subject", null, LocaleContextHolder.locale)
+
+        def model = [:]
+        model["teamName"] = team.teamName
+        model["url"] = url
+
+        mailService.sendMail {
+            to team.mail
+            subject mailSubject
+            body(view: "/register/accountConfirmationMail",
+                 model: model)
+        }
+    }
+
+    def isAccountTokenValid(Long teamId, String token) {
+        def team = Team.get(teamId)
+        if (team == null || team.enabled) {
+            return false;
+        }
+
+        String tokenToMatch = getSecureToken(team.mail)
+        boolean valid = (token == tokenToMatch)
+        return valid;
+    }
+
+    private def getSecureToken(String teamMail) {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        String salt = grailsApplication.config.ub.security.salt;
+        md.update(salt.getBytes());
+        return md.digest(teamMail.getBytes()).toString().encodeAsBase64()
     }
 }

@@ -11,6 +11,11 @@
                     <div class="fill"></div>
                     <div class="carousel-caption">
                         <h2><g:message code="ub.home.title" /></h2>
+                        <g:if test='${flash.message}'>
+                            <div class='alert alert-success'>
+                                <span>${flash.message}</span>
+                            </div>
+                        </g:if>
                         <a href="#" class="button" data-target="#carousel" data-slide-to="1"><g:message code="ub.home.login.label" /></a>
                         <a href="#" class="button" data-target="#carousel" data-slide-to="2"><g:message code="ub.home.register.label" /></a>
                     </div>

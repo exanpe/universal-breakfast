@@ -4,10 +4,10 @@ import grails.util.Holders
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+grails.config.locations = [ "classpath:${appName}-config.properties",
+                             "classpath:${appName}-config.groovy",
+                             "file:${userHome}/.grails/${appName}-config.properties",
+                             "file:${userHome}/.grails/${appName}-config.groovy"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -103,6 +103,8 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 
 ub.template.mail.prepare = "mails/prepareMail.html"
 ub.template.mail.together = "mails/togetherMail.html"
+
+ub.security.salt = "UniversalBreakfast!2014"
 
 grails {
     mail {
