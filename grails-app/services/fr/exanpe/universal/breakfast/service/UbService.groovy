@@ -179,6 +179,13 @@ class UbService {
         }
     }
 
+    def enableAccount(Long teamId) {
+        Team team = Team.get(teamId)
+        team.enabled = true
+        team.save()
+        return team
+    }
+
     def isAccountTokenValid(Long teamId, String token) {
         def team = Team.get(teamId)
         if (team == null || team.enabled) {

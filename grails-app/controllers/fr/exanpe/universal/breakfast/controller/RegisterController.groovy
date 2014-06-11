@@ -33,12 +33,14 @@ class RegisterController {
         Long teamId = Long.valueOf(params.id)
         boolean valid = ubService.isAccountTokenValid(teamId, token);
         if (valid) {
-            Team team = Team.get(teamId)
+            Team team = ubService.enableAccount(teamId)
             springSecurityService.reauthenticate(team.username, team.password)
             redirect controller: 'login', action: 'auth'
         }
         else {
-            return ""
+            flash.message = message(code: "ub.register.account.confirm.fail")
+            flash.status = 'danger'
+            redirect controller: 'home', action: 'index'
         }
     }
 }

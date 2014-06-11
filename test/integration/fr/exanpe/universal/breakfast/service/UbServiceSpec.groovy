@@ -105,4 +105,19 @@ class UbServiceSpec extends IntegrationSpec {
         Team.get(ubService.springSecurityService.currentUser.id).lastComplete.clearTime() == new Date().clearTime()
         Team.get(ubService.springSecurityService.currentUser.id).workflowState == WorkflowState.COMPLETE
     }
+
+    def "test enable account" () {
+        when: "Team account has just been registered"
+        Team team = Team.findByMailCI("test@mail.com").get()
+
+        then : "account is disabled"
+        team.enabled == false
+
+        when: "User confirms his account"
+        team = Team.findByMailCI("test@mail.com").get()
+        ubService.enableAccount(team.id)
+
+        then: "account is enabled"
+        team.enabled == true
+    }
 }
