@@ -241,3 +241,6 @@ simpleCaptcha {
     //no session if not loggued
     storeInSession = false
 }
+
+// GA conf
+google.analytics.webPropertyID = "UA-xxxxxx-x"

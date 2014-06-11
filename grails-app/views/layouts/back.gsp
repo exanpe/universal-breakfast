@@ -28,6 +28,7 @@
         <asset:javascript src="ub.js" />
 		<r:layoutResources />
 
+        <ga:trackPageview />
 	</head>
 	<body class="back">
 
