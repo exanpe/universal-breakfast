@@ -60,7 +60,7 @@ class RegisterCommand {
         }
 
         mail blank: false, nullable: false, email: true, validator: { value, obj ->
-            if (Team.findByMail(value)) {
+            if (Team.findByMailCI(value)) {
                 return "ub.register.mail.validator.exists"
             }
         }
