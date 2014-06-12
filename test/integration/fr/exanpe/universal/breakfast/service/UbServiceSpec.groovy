@@ -58,7 +58,7 @@ class UbServiceSpec extends IntegrationSpec {
     void "test prepare"() {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
-        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndex([1]), "")
+        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndexActive([1]), "")
 
         then :
         Member.withNewSession {
@@ -76,8 +76,8 @@ class UbServiceSpec extends IntegrationSpec {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
         ubService.complete(new Date().minus(1),
-                ubService.getMembersByIndex([1]),
-                ubService.getMembersByIndex([0,1,2,4]))
+                ubService.getMembersByIndexActive([1]),
+                [1,2,3,4,5,])
 
         then :
         //nom 2 is supplier
@@ -104,5 +104,21 @@ class UbServiceSpec extends IntegrationSpec {
 
         Team.get(ubService.springSecurityService.currentUser.id).lastComplete.clearTime() == new Date().clearTime()
         Team.get(ubService.springSecurityService.currentUser.id).workflowState == WorkflowState.COMPLETE
+    }
+
+    void "test complete full cycle"() {
+        setup :
+        def memberIdx1 = ubService.getMembersByIndexActive([0])
+
+        when :
+        for(i in 0..4)//only 5 actives
+            ubService.complete(new Date().minus(4-i),
+                    ubService.getMembersByIndexActive([0]),
+                    ubService.getMembersByIndexActive([0,1,2,3,4,5]))
+
+
+        then :
+        //last is 1
+        Member.getListOrderedActive(Team.get(ubService.springSecurityService.currentUser.id)).list()[0].id == memberIdx1[0].id
     }
 }

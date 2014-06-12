@@ -30,7 +30,7 @@ class PrepareController {
             return
         }
 
-        def suppliers = ubService.getMembersByIndex(command.suppliers)
+        def suppliers = ubService.getMembersByIndexActive(command.suppliers)
 
         //TODO JMX manage exception with mail
         ubService.prepare(command.date, suppliers, command.message);

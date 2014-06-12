@@ -43,8 +43,8 @@ class CompleteController {
             return
         }
 
-        def suppliers = ubService.getMembersByIndex(command.suppliers)
-        def attendees = ubService.getMembersByIndex(command.attendees)
+        def suppliers = ubService.getMembersByIndexActive(command.suppliers)
+        def attendees = ubService.getMembersByIndexActive(command.attendees)
 
         ubService.complete(command.date, suppliers, attendees);
 
