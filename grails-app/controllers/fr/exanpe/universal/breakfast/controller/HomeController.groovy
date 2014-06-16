@@ -19,4 +19,10 @@ class HomeController {
         render view: view, model: [postUrl: postUrl,
                                    rememberMeParameter: config.rememberMe.parameter]
     }
+
+    def contact() {}
+
+    def sendMessage() {
+
+    }
 }

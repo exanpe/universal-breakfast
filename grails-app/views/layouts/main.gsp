@@ -41,7 +41,9 @@
                         <h2>One question, one bug or simply get In touch ?</h2>
                     </div>
                     <div class="col-md-3 col-sm-4">
-                        <a href="#" class="btn btn-danger btn-lg">Contact us</a>
+                        <g:link controller="home" action="contact" class="btn btn-danger btn-lg">
+                            <g:message code="ub.contact.link.label" />
+                        </g:link>
                     </div>
                 </div>
             </div>
