@@ -12,7 +12,7 @@
                     <div class="carousel-caption">
                         <h2><g:message code="ub.home.title" /></h2>
                         <g:if test='${flash.message}'>
-                            <div class='alert alert-success'>
+                            <div class='alert alert-${flash.status ?: "info"}'>
                                 <span>${flash.message}</span>
                             </div>
                         </g:if>
