@@ -39,11 +39,13 @@ class Member {
             eq "active", true
             order "scaleValue", "asc"
             order "lastBreakfast", "asc"
+            order "id", "asc"//first registered
         }
         getListOrdered{ team ->
             eq "team", team
             order "scaleValue", "asc"
             order "lastBreakfast", "asc"
+            order "id", "asc"//first registered
         }
     }
 
