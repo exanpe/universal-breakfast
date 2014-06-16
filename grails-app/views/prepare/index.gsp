@@ -19,9 +19,10 @@
             <g:message code="ub.prepare.success"/>
         </div>
     </g:if>
-    <g:elseif test="${team.workflowState == WorkflowState.PREPARE}">
+    <g:elseif test="${team.workflowState == WorkflowState.PREPARE && team.breakfastScheduledDate >= new Date().clearTime()}">
         <div class="alert alert-warning">
-            <g:message code="ub.prepare.already.warn" args="[g.formatDate(date : team.lastPrepare)]"/>
+            <g:message code="ub.prepare.already.warn" args="[g.formatDate(date : team.lastPrepare)]"/><br/>
+            <g:message code="ub.prepare.already.next.info" args="[g.formatDate(date : team.breakfastScheduledDate)]"/>
         </div>
     </g:elseif>
 
@@ -43,15 +44,17 @@
                     <g:message code="prepareCommand.suppliers.label"/>
                 </ub:required>
             </label>
-            <div class="col-xs-8 input-group">
-                <g:each in="${members}" var="member" status="i">
-                    <div class="checkbox">
-                        <label for="supplier_${i}">
-                            <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
-                            ${member.name}
-                        </label>
-                    </div>
-                </g:each>
+            <div class="col-xs-7 input-group">
+                <ul class="list-group">
+                    <g:each in="${members}" var="member" status="i">
+                        <li class="list-group-item member-active-${member.active} member-preparing-${member.preparing}">
+                            <label for="supplier_${i}">
+                                <g:checkBox id="supplier_${i}" name="suppliers" value="${i}" class="icb" checked="${command?.has(i)}"/>
+                                ${member.name}
+                            </label>
+                        </li>
+                    </g:each>
+                </ul>
             </div>
         </div>
         <div class="form-group">

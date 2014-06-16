@@ -84,7 +84,7 @@ class UbService {
      * @param indexes the indexes, starting from 0
      * @return
      */
-    List<Member> getMembersByIndex(List<Integer> indexes){
+    List<Member> getMembersByIndexActive(List<Integer> indexes){
         def res = []
         def members = Member.getListOrderedActive(springSecurityService.currentUser).list(max:20)
 

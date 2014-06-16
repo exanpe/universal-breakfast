@@ -7,6 +7,13 @@ class UrlMappings {
             }
         }
 
+        "/planning/$teamName?(.$format)?"{
+            controller = 'planning'
+            constraints {
+                teamName nullable: false, blank: false
+            }
+        }
+
         "/"(controller: "home")
         "500"(view:'/error')
 	}

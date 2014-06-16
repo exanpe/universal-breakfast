@@ -58,7 +58,7 @@ class UbServiceSpec extends IntegrationSpec {
     void "test prepare"() {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
-        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndex([1]), "")
+        ubService.prepare(new Date().clearTime().plus(4), ubService.getMembersByIndexActive([1]), "")
 
         then :
         Member.withNewSession {
@@ -104,20 +104,5 @@ class UbServiceSpec extends IntegrationSpec {
 
         Team.get(ubService.springSecurityService.currentUser.id).lastComplete.clearTime() == new Date().clearTime()
         Team.get(ubService.springSecurityService.currentUser.id).workflowState == WorkflowState.COMPLETE
-    }
-
-    def "test enable account" () {
-        when: "Team account has just been registered"
-        Team team = Team.findByMailCI("test@mail.com").get()
-
-        then : "account is disabled"
-        team.enabled == false
-
-        when: "User confirms his account"
-        team = Team.findByMailCI("test@mail.com").get()
-        ubService.enableAccount(team.id)
-
-        then: "account is enabled"
-        team.enabled == true
     }
 }
