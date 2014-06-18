@@ -21,7 +21,7 @@
                             <g:message code="ub.home.login.label" />
                         </a>
                         <g:link class="button" controller="planning">
-                            <i class="fa fa-calendar-o"></i> &nbsp;&nbsp;<g:message code="ub.planning.label"/>
+                            <i class="fa fa-calendar-o"></i> &nbsp;&nbsp;<g:message code="ub.home.planning.label"/>
                         </g:link><br/>
                         <a href="#" class="button" data-target="#carousel" data-slide-to="2">
                             <i class="fa fa-edit"></i> &nbsp;&nbsp<g:message code="ub.home.register.label" />
