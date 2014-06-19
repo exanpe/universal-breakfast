@@ -24,16 +24,30 @@
 
                 <g:form class="form-horizontal" controller="home" action="sendMessage">
                     <div class="form-group">
+                        <label for="name" class="control-label col-xs-4">
+                            <ub:required>
+                                <g:message code="ub.contact.name.label"/>
+                            </ub:required>
+                        </label>
+                        <div class="col-xs-6">
+                            <g:field type="text" name="name" class="form-control" value="${params?.name}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="mail" class="control-label col-xs-4">
-                            <g:message code="ub.contact.mail.label"/>
+                            <ub:required>
+                                <g:message code="ub.contact.mail.label"/>
+                            </ub:required>
                         </label>
                         <div class="col-xs-6">
                             <g:field type="email" name="mail" class="form-control" value="${params?.mail}" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mail" class="control-label col-xs-4">
-                            <g:message code="ub.contact.message.label"/>
+                        <label for="message" class="control-label col-xs-4">
+                            <ub:required>
+                                <g:message code="ub.contact.message.label"/>
+                            </ub:required>
                         </label>
                         <div class="col-xs-6">
                             <g:textArea id="message" name="message" rows="6" class="form-control" value="${params?.message}" />
@@ -46,7 +60,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for='captcha' class="control-label col-xs-4"><g:message code="ub.register.captcha.label" /> </label>
+                        <label for='captcha' class="control-label col-xs-4">
+                            <ub:required>
+                                <g:message code="ub.register.captcha.label" />
+                            </ub:required>
+                        </label>
                         <div class="col-xs-4">
                             <g:textField name="captcha" class="form-control" />
                         </div>

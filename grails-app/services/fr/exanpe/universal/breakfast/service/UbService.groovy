@@ -203,4 +203,22 @@ class UbService {
         md.update(salt.getBytes());
         return md.digest(teamMail.getBytes()).toString().encodeAsBase64()
     }
+
+    def sendContactMessage(String name, String fromContact, String message) {
+        def mailSubject = Holders.applicationContext.getMessage("ub.contact.message.subject", [name] as Object[], LocaleContextHolder.locale)
+        String crew = grailsApplication.config.grails.mail.username;
+        def model = [:]
+        model["name"] = name
+        model["mail"] = fromContact
+        model["message"] = message
+
+        mailService.sendMail {
+            from fromContact
+            to crew
+            subject mailSubject
+            body(view: "/home/contactMessageMail",
+                    model: model)
+        }
+    }
+
 }
