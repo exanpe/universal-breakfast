@@ -106,16 +106,18 @@ ub.template.mail.together = "mails/togetherMail.html"
 
 ub.security.salt = "UniversalBreakfast!2014"
 
+ub.mail="universal-breakfast@gmail.com"
+ub.github="https://github.com/exanpe/universal-breakfast"
+
 grails {
     mail {
         host = "localhost"
         port = 25
-        username = "ultimate-breakfast@gmail.com"
+        username = ub.mail
         password = ""
     }
 }
-
-grails.mail.default.from = "exanpe@gmail.com"
+grails.mail.default.from = ub.mail
 
 templates = {
     props{
@@ -156,7 +158,7 @@ environments {
             mail {
                 host = "smtp.gmail.com"
                 port = 465
-                username = "exanpe@gmail.com"
+                username = ub.mail
                 password = "TODO"
                 props = ["mail.smtp.auth":"true",
                         "mail.smtp.socketFactory.port":"465",
@@ -210,6 +212,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/simpleCaptcha/**':                ['permitAll'],
         '/register/**':                     ['permitAll'],
         '/planning/**':                      ['permitAll'],//planning
+        '/contact/**':                      ['permitAll'],//planning
         //user URL
         '/complete/**':                      ['ROLE_USER'],
         '/getTogether/**':                   ['ROLE_USER'],
