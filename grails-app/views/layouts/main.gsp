@@ -34,20 +34,20 @@
 		<g:layoutBody/>
 
         <!-- Contact -->
-        <div class="section-colored home" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-sm-8">
-                        <h2>One question, one bug or simply get In touch ?</h2>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <g:link controller="home" action="contact" class="btn btn-danger btn-lg">
-                            <g:message code="ub.contact.link.label" />
-                        </g:link>
+        <g:if test="${actionName != "contact"}">
+            <div class="section-colored home" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-8">
+                            <h2>One question, one bug or simply get In touch ?</h2>
+                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <g:link controller="home" action="contact" class="btn btn-danger btn-lg">Contact us</g:link>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </g:if>
 
         <!-- Footer -->
         <g:render template="/menu/footer" />

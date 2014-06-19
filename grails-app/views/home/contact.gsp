@@ -19,6 +19,11 @@
 <div class="container container-int">
     <div class="row">
         <div class="col-md-12 col-sm-12">
+
+            <blockquote>
+                <p><g:message code="ub.contact.feelfree" /></p>
+            </blockquote>
+
             <div class="register">
                 <ub:errors obj="${command}"/>
 
