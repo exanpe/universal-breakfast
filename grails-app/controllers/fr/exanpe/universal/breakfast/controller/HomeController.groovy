@@ -1,11 +1,13 @@
 package fr.exanpe.universal.breakfast.controller
 
+import fr.exanpe.universal.breakfast.service.UbService
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.SpringSecurityUtils
 
 class HomeController {
 
     SpringSecurityService springSecurityService
+    UbService ubService
 
     def index() {
         if (springSecurityService.isLoggedIn()) {
@@ -18,5 +20,43 @@ class HomeController {
         String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
         render view: view, model: [postUrl: postUrl,
                                    rememberMeParameter: config.rememberMe.parameter]
+    }
+
+    def contact() {}
+
+    def sendMessage = { ContactCommand command ->
+        if (command.hasErrors())
+        {
+            command.errors.allErrors.each {
+                log.debug "error while filing ContactCommand :" + it
+            }
+            render(view: 'contact', model: [command: command])
+            return
+        }
+
+        ubService.sendContactMessage(command.name, command.mail, command.message)
+        flash.message = message(code: "ub.contact.message.confirm")
+        redirect action: 'index'
+    }
+}
+
+class ContactCommand {
+    String name
+    String mail
+    String message
+    String captcha
+
+    def simpleCaptchaService
+
+    static constraints = {
+        name blank: false, nullable: false, minSize: 4
+        mail blank: false, nullable: false, email: true
+        message blank: false, nullable: false, minSize: 20, maxSize: 400
+        captcha validator: { value, obj ->
+            boolean captchaValid = obj.simpleCaptchaService.validateCaptcha(value)
+            if (!captchaValid) {
+                return "ub.register.captcha.validator.fail"
+            }
+        }
     }
 }

@@ -45,8 +45,16 @@ class AccountCommand {
     String password
     String password2
 
+    SpringSecurityService springSecurityService
+
     static constraints = {
-        mail blank: false, nullable: false, email: true
+        mail blank: false, nullable: false, email: true, validator: { value, obj ->
+            Team team = Team.get(obj.springSecurityService?.currentUser?.id)
+            if (team.mail != value && Team.findByMailCI(value).get()) {
+                return "ub.register.mail.validator.exists"
+            }
+        }
+
         password blank: false, nullable: false, minSize: 4
         password2 nullable: false, blank:false, validator: { value, obj ->
             if (obj.password != value) {

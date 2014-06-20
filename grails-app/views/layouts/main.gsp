@@ -34,7 +34,7 @@
 		<g:layoutBody/>
 
         <!-- Contact -->
-        <g:if test="${controllerName != "contact"}">
+        <g:if test="${actionName != "contact"}">
             <div class="section-colored home" id="contact">
                 <div class="container">
                     <div class="row">
@@ -42,7 +42,7 @@
                             <h2>One question, one bug or simply get In touch ?</h2>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <g:link controller="contact" class="btn btn-danger btn-lg">Contact us</g:link>
+                            <g:link controller="home" action="contact" class="btn btn-danger btn-lg">Contact us</g:link>
                         </div>
                     </div>
                 </div>

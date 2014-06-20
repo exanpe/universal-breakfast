@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="${createLinkTo(dir:'')}">Home</a></li>
                 <sec:ifNotLoggedIn>
-                    <li><g:link controller="contact">Contact</g:link></li>
+                    <li><g:link controller="home" action="contact">Contact</g:link></li>
                 </sec:ifNotLoggedIn>
                 <sec:ifLoggedIn>
                     <li><a href="#"><ub:teamName /></a></li>

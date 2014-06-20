@@ -19,7 +19,9 @@
         <g:form class="form-horizontal" controller="account" action="update">
             <div class="form-group">
                 <label for="mail" class="control-label col-xs-4">
-                    <g:message code="ub.register.mail.label"/>
+                    <ub:required>
+                        <g:message code="ub.register.mail.label"/>
+                    </ub:required>
                 </label>
                 <div class="col-xs-4">
                     <g:field type="email" name="mail" class="form-control" value="${params?.mail}" />
@@ -27,7 +29,9 @@
             </div>
             <div class="form-group">
                 <label for='password' class="control-label col-xs-4">
-                    <g:message code="ub.register.password.label"/>
+                    <ub:required>
+                        <g:message code="ub.register.password.label"/>
+                    </ub:required>
                 </label>
                 <div class="col-xs-4">
                     <g:passwordField name="password" class="form-control" value="${params?.password}" />
@@ -35,7 +39,9 @@
             </div>
             <div class="form-group">
                 <label for='password2' class="control-label col-xs-4">
-                    <g:message code="ub.register.confirm.password.label"/>
+                    <ub:required>
+                        <g:message code="ub.register.confirm.password.label"/>
+                    </ub:required>
                 </label>
                 <div class="col-xs-4">
                     <g:passwordField name="password2" class="form-control" value="${params?.password2}" />
