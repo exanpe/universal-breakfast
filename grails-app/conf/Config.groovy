@@ -212,7 +212,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/simpleCaptcha/**':                ['permitAll'],
         '/register/**':                     ['permitAll'],
         '/planning/**':                      ['permitAll'],//planning
-        '/contact/**':                      ['permitAll'],//planning
+        '/contact/**':                      ['permitAll'],//contact
+        '/card/**':                         ['permitAll'],//card
         //user URL
         '/complete/**':                      ['ROLE_USER'],
         '/getTogether/**':                   ['ROLE_USER'],

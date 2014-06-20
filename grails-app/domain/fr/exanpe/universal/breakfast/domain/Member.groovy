@@ -47,6 +47,17 @@ class Member {
             order "lastBreakfast", "asc"
             order "id", "asc"//first registered
         }
+        findByTeamAndNameCI{ team, name ->
+            eq "team", team
+            eq 'name', name, ignoreCase: true
+        }
+        countActives{ team ->
+            eq 'team', team
+            eq 'active', true
+            projections {
+                count("id")
+            }
+        }
     }
 
 }

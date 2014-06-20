@@ -50,8 +50,6 @@
     </table>
 
     <g:paginate total="${total}"  max="${grailsApplication.config.ub.history.perPage}"/>
-    TODO : Table of history pagined by 20 ordered by date desc and "clear all" button with alert
-
 </g:else>
 
 </body>

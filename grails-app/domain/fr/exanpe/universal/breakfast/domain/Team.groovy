@@ -62,6 +62,7 @@ class Team {
         findByMailCI { mail ->
             eq 'mail', mail, ignoreCase: true
         }
+
     }
 
     Set<Role> getAuthorities() {

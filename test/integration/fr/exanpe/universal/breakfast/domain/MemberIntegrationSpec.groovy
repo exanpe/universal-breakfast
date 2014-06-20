@@ -44,5 +44,7 @@ class MemberIntegrationSpec extends IntegrationSpec {
 
         def allMembers = Member.getListOrdered(team).list();
         allMembers.size() == 6
+
+        Member.countActives(team).get() == 5
     }
 }
