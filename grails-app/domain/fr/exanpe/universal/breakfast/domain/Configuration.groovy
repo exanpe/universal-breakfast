@@ -12,6 +12,9 @@ class Configuration {
     String togetherMail
     String togetherMailSubject
 
+    Boolean cardEnabled = true
+    Boolean planningEnabled = true
+
     //add more configuration
 
     static belongsTo = [team:Team]
@@ -33,6 +36,9 @@ class Configuration {
         togetherMail = this.class.classLoader.getResource(Holders.grailsApplication.config.ub.template.mail.together.toString()).text;
         prepareMailSubject = Holders.applicationContext.getMessage("ub.mail.prepare.subject", null, LocaleContextHolder.locale)
         togetherMailSubject = Holders.applicationContext.getMessage("ub.mail.together.subject", null, LocaleContextHolder.locale)
+
+        cardEnabled = true;
+        planningEnabled = true;
 
         return this;
     }
