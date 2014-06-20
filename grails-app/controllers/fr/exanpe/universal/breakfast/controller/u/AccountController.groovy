@@ -10,8 +10,14 @@ class AccountController {
     SpringSecurityService springSecurityService
 
     def index() {
+
+        def team = Team.get(springSecurityService.currentUser.id)
+        //eager load
+        def conf = team.configuration
+
         params.mail = springSecurityService.currentUser?.mail
-        [params: params]
+
+        [params: params, command:flash?.command, team:team]
     }
 
     def update = { AccountCommand command ->
@@ -21,22 +27,36 @@ class AccountController {
             command.errors.allErrors.each {
                 log.debug "error while update team: " + it
             }
-            render(view: 'index', model: [command: command])
+            flash.command = command
+            redirect(action: 'index')
             return
         }
         else {
             Team team = new Team(params)
             ubService.updateTeam(springSecurityService.currentUser?.username, team)
             flash.message = "ub.account.update.success"
-            render(view: 'index')
+            redirect(action: 'index')
             return
         }
 
     }
 
+    def privacy = {
+        log.debug "Account privacy action params: " + params
+
+        println "ona "+springSecurityService.currentUser
+
+        def conf = Team.get(springSecurityService.currentUser.id).configuration
+        conf.cardEnabled = params.cardEnabled
+        conf.planningEnabled = params.planningEnabled
+        conf.save(flush:true)
+
+        redirect(action: 'index')
+    }
+
     def delete() {
         // TODO : remove account
-        render(view: 'index')
+        redirect(action: 'home')
     }
 }
 

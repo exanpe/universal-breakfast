@@ -15,6 +15,8 @@ class Configuration {
     Boolean cardEnabled = true
     Boolean planningEnabled = true
 
+    Team team
+
     //add more configuration
 
     static belongsTo = [team:Team]
