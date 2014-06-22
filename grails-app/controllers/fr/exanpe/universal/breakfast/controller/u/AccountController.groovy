@@ -51,6 +51,8 @@ class AccountController {
         conf.planningEnabled = params.planningEnabled
         conf.save(flush:true)
 
+        flash.message = "ub.account.update.success"
+
         redirect(action: 'index')
     }
 
