@@ -102,7 +102,7 @@ ub.history.perPage=10
 grails.plugins.twitterbootstrap.fixtaglib = true
 
 ub.template.mail.prepare = "mails/prepareMail.html"
-ub.template.mail.together = "mails/togetherMail.html"
+ub.template.mail.gathering = "mails/gatheringMail.html"
 
 ub.security.salt = "UniversalBreakfast!2014"
 
@@ -129,7 +129,7 @@ templates = {
     }
 
     template id:"prepare", props : ["breakfastdate", "message"]
-    template id:"together", props : ["location", "message"]
+    template id:"gather", props : ["location", "message"]
 }
 
 environments {
@@ -215,7 +215,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/card/**':                         ['permitAll'],//card
         //user URL
         '/complete/**':                      ['ROLE_USER'],
-        '/getTogether/**':                   ['ROLE_USER'],
+        '/gather/**':                        ['ROLE_USER'],
         '/manage/**':                        ['ROLE_USER'],
         '/prepare/**':                       ['ROLE_USER'],
         '/route/**':                         ['ROLE_USER'],

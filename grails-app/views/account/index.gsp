@@ -57,7 +57,67 @@
     </div>
 
     <h2 class="section-title"><g:message code="ub.account.mail.title" /> </h2>
-    TODO
+    <g:form class="form-horizontal mail" controller="account" action="mail">
+        <div class="form-group">
+            <label for='sendMail' class="control-label col-xs-4">
+                <ub:required>
+                    <g:message code="ub.account.mail.send.label"/>
+                </ub:required>
+            </label>
+            <div class="col-xs-4">
+                <g:checkBox id="sendMail" class="icb"  name="sendMail" value="${team.configuration.sendMail}" />
+            </div>
+        </div>
+        <div id="mailCustomization">
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <ub:templateDescription template="prepare"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for='prepareMailSubject' class="control-label col-md-4">
+                    <g:message code="ub.account.mail.prepareSubject.label"/>
+                </label>
+                <div class="col-md-8">
+                    <g:textField name="prepareMailSubject" id="prepareMailSubject" value="${team.configuration.prepareMailSubject}" class="col-xs-12 form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for='prepareMail' class="control-label col-md-4">
+                    <g:message code="ub.account.mail.prepare.label"/>
+                </label>
+                <div class="col-md-8">
+                    <g:textArea name="prepareMail" id="prepareMail" value="${team.configuration.prepareMail}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    <ub:templateDescription template="gather"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for='gatheringMailSubject' class="control-label col-md-4">
+                    <g:message code="ub.account.mail.gatheringSubject.label"/>
+                </label>
+                <div class="col-md-8">
+                    <g:textField name="gatheringMailSubject" id="gatheringMailSubject" value="${team.configuration.gatheringMailSubject}" class="col-xs-12 form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for='gatheringMail' class="control-label col-md-4">
+                    <g:message code="ub.account.mail.gathering.label"/>
+                </label>
+                <div class="col-md-8">
+                    <g:textArea name="gatheringMail" id="gatheringMail" value="${team.configuration.gatheringMail}" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-xs-4">
+                <button type="submit" class="btn btn-primary"><g:message code="default.button.update.label" /> </button>
+            </div>
+        </div>
+    </g:form>
 
     <h2 class="section-title"><g:message code="ub.account.privacy.title" /> </h2>
     <g:form class="form-horizontal" controller="account" action="privacy">
@@ -96,5 +156,21 @@
             </div>
         </div>
     </g:form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if(!$('#sendMail').is(":checked")){
+                $('#mailCustomization').css('display', 'none')
+            }
+
+            $('#sendMail').on('ifChecked', function(event){
+                $('#mailCustomization').slideDown();
+            });
+            $('#sendMail').on('ifUnchecked', function(event){
+                $('#mailCustomization').slideUp();
+            });
+        })
+    </script>
+
 </body>
 </html>

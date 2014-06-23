@@ -18,8 +18,8 @@ class ConfigurationSpec extends IntegrationSpec {
         def c = new Configuration().restoreDefault()
 
         expect :
-        c.togetherMail != null
-        c.togetherMail.startsWith("Hi,<br/>")
-        c.togetherMailSubject.startsWith("[Universal-Breakfast]")
+        c.gatheringMail != null
+        c.gatheringMail.startsWith("Hi,<br/>")
+        c.gatheringMailSubject.startsWith("[Universal-Breakfast]")
     }
 }

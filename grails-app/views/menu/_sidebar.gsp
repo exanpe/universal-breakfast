@@ -3,7 +3,7 @@
         <h4>Breakfast</h4>
         <ul class="nav">
             <li><g:link controller="prepare"><g:message code="ub.prepare.sidebar.label"/></g:link></li>
-            <li><g:link controller="getTogether"><g:message code="ub.getTogether.sidebar.label"/></g:link></li>
+            <li><g:link controller="gather"><g:message code="ub.gather.sidebar.label"/></g:link></li>
             <li><g:link controller="complete"><g:message code="ub.complete.sidebar.label"/></g:link></li>
         </ul>
     </div>

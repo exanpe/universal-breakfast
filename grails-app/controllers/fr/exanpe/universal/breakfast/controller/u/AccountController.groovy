@@ -44,11 +44,28 @@ class AccountController {
     def privacy = {
         log.debug "Account privacy action params: " + params
 
-        println "ona "+springSecurityService.currentUser
-
         def conf = Team.get(springSecurityService.currentUser.id).configuration
         conf.cardEnabled = params.cardEnabled
         conf.planningEnabled = params.planningEnabled
+        conf.save(flush:true)
+
+        flash.message = "ub.account.update.success"
+
+        redirect(action: 'index')
+    }
+
+    def mail = {
+        log.debug "Account mail action params: " + params
+
+        def conf = Team.get(springSecurityService.currentUser.id).configuration
+        conf.sendMail = params.sendMail
+
+        conf.prepareMailSubject = params.prepareMailSubject
+        conf.prepareMail = params.prepareMail
+
+        conf.gatheringMailSubject = params.gatheringMailSubject
+        conf.gatheringMail = params.gatheringMail
+
         conf.save(flush:true)
 
         flash.message = "ub.account.update.success"

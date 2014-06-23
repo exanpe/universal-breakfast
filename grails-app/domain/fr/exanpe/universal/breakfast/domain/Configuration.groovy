@@ -9,8 +9,8 @@ class Configuration {
 
     String prepareMail
     String prepareMailSubject
-    String togetherMail
-    String togetherMailSubject
+    String gatheringMail
+    String gatheringMailSubject
 
     Boolean cardEnabled = true
     Boolean planningEnabled = true
@@ -24,7 +24,7 @@ class Configuration {
     static constraints = {
     //    created on beforeInsert
     //    prepareMail nullable: false
-    //    togetherMail nullable: false
+    //    gatheringMail nullable: false
     }
 
     def beforeInsert = {
@@ -35,9 +35,9 @@ class Configuration {
         sendMail = true
 
         prepareMail = this.class.classLoader.getResource(Holders.grailsApplication.config.ub.template.mail.prepare.toString()).text;
-        togetherMail = this.class.classLoader.getResource(Holders.grailsApplication.config.ub.template.mail.together.toString()).text;
+        gatheringMail = this.class.classLoader.getResource(Holders.grailsApplication.config.ub.template.mail.gathering.toString()).text;
         prepareMailSubject = Holders.applicationContext.getMessage("ub.mail.prepare.subject", null, LocaleContextHolder.locale)
-        togetherMailSubject = Holders.applicationContext.getMessage("ub.mail.together.subject", null, LocaleContextHolder.locale)
+        gatheringMailSubject = Holders.applicationContext.getMessage("ub.mail.gathering.subject", null, LocaleContextHolder.locale)
 
         cardEnabled = true;
         planningEnabled = true;
