@@ -51,7 +51,7 @@ class Team {
     static constraints = {
         username blank: false, nullable: false, unique: true, maxSize: 32
         password blank: false, nullable: false
-        mail blank: false, nullable: false, maxSize: 64
+        mail blank: false, unique: true, nullable: false, maxSize: 64
     }
 
     static namedQueries = {

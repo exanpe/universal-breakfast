@@ -3,6 +3,7 @@ package fr.exanpe.universal.breakfast.service
 import fr.exanpe.universal.breakfast.domain.*
 import grails.transaction.Transactional
 import grails.util.Holders
+import org.apache.commons.lang.RandomStringUtils
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.time.FastDateFormat
 import org.springframework.context.i18n.LocaleContextHolder
@@ -217,6 +218,25 @@ class UbService {
             to crew
             subject mailSubject
             body(view: "/home/contactMessageMail",
+                    model: model)
+        }
+    }
+
+    def sendResetPassword(String mail) {
+        def mailSubject = Holders.applicationContext.getMessage("ub.password.reset.mail.subject", null, LocaleContextHolder.locale)
+        String newPassword = RandomStringUtils.random(8, true, true)
+        Team current = Team.findByMailCI(mail).get()
+        current.setPassword(newPassword)
+        current.save()
+
+        def model = [:]
+        model["newPassword"] = newPassword
+        model["teamName"] = current.teamName
+
+        mailService.sendMail {
+            to mail
+            subject mailSubject
+            body(view: "/home/resetPasswordMail",
                     model: model)
         }
     }

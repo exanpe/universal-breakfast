@@ -3,4 +3,4 @@ Welcome ${teamName},<br/><br />
 <br/>
 <g:message code="ub.register.account.confirmation.mail.end" />
 <br /><br />
-<g:message code="ub.register.account.confirmation.mail.signature" />
+<g:message code="ub.confirmation.mail.signature" />
