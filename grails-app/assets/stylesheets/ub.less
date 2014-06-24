@@ -595,3 +595,32 @@ form.mail {
   font-size: 0.7em;
   font-style: italic;
 }
+
+div.hopscotch-bubble .hopscotch-nav-button.next {
+  border-color:@brand-primary;
+  background-color:@brand-primary;
+  filter:progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='@brand-primary', endColorstr='@btn-default-bg');
+  background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,@brand-primary),color-stop(100%,@btn-default-bg));
+  background-image:-webkit-linear-gradient(top,@brand-primary 0,@btn-default-bg 100%);
+  background-image:-moz-linear-gradient(top,@brand-primary 0,@btn-default-bg 100%);
+  background-image:-o-linear-gradient(top,@brand-primary 0,@btn-default-bg 100%);
+  background-image:linear-gradient(top,@brand-primary 0,@btn-default-bg 100%);
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+  background-color:@btn-default-bg;
+  filter:progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#2672ae', endColorstr='@brand-primary');
+  background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,@btn-default-bg),color-stop(100%,@brand-primary));
+  background-image:-webkit-linear-gradient(top,@btn-default-bg 0,@brand-primary 100%);
+  background-image:-moz-linear-gradient(top,@btn-default-bg 0,@brand-primary 100%);
+  background-image:-o-linear-gradient(top,@btn-default-bg 0,@brand-primary 100%);
+  background-image:linear-gradient(top,@btn-default-bg 0,@brand-primary 100%);
+}
+
+div.hopscotch-bubble h3 {
+  color : @brand-primary;
+}
+
+.hopscotch-bubble * {
+  box-sizing: content-box;
+}

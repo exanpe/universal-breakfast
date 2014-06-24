@@ -210,6 +210,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/images/**':                    ['permitAll'],
         '/**/favicon.ico':                  ['permitAll'],
         '/simpleCaptcha/**':                ['permitAll'],
+        '/jawr/**':                         ['permitAll'],
         '/register/**':                     ['permitAll'],
         '/planning/**':                      ['permitAll'],//planning
         '/card/**':                         ['permitAll'],//card
@@ -247,3 +248,21 @@ simpleCaptcha {
 
 // GA conf
 google.analytics.webPropertyID = "UA-xxxxxx-x"
+
+//http://mrhaki.blogspot.fr/2011/11/grails-goodness-internationalize.html
+jawr {
+    js {
+        // Specific mapping to disable resource handling by plugin.
+        mapping = '/jawr/'
+
+        bundle {
+            lib {
+                // Bundle id is used in views.
+                id = '/i18n/messages.js'
+
+                // Tell which messages need to localized in Javascript.
+                mappings = 'messages:grails-app.i18n.messages[ub.js]'
+            }
+        }
+    }
+}
