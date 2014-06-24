@@ -31,6 +31,7 @@ class Member {
 
     static mapping = {
         lastBreakfast type:'date'
+        team index: 'idx_member_team'
     }
 
     static namedQueries = {

@@ -61,5 +61,6 @@ class TeamRole implements Serializable {
     static mapping = {
         id composite: ['role', 'team']
         version false
+        team index: 'idx_teamrole_team'
     }
 }

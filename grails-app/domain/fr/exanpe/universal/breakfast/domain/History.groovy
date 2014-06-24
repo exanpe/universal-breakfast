@@ -15,6 +15,10 @@ class History {
         team nullable: false
     }
 
+    static mapping = {
+        team index : 'idx_history_team'
+    }
+
     def beforeInsert = {
         date.clearTime();
     }
