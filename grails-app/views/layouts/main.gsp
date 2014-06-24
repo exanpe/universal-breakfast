@@ -39,10 +39,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-sm-8">
-                            <h2>One question, one bug or simply get In touch ?</h2>
+                            <h2><g:message code="ub.home.contact.or.question"/></h2>
                         </div>
                         <div class="col-md-3 col-sm-4">
-                            <g:link controller="home" action="contact" class="btn btn-danger btn-lg">Contact us</g:link>
+                            <g:link controller="home" action="contact" class="btn btn-danger btn-lg">
+                                <g:message code="ub.contact.link.label"/>
+                            </g:link>
                         </div>
                     </div>
                 </div>

@@ -45,4 +45,14 @@ class UbTagLib {
         out << render(template: "/tpl/errors",
                 model: ["obj": attrs.obj])
     }
+
+    /**
+     * @attr obj the Validateable object holding errors
+     */
+    def autoHelp = {attrs,  body ->
+        if(session["help"]){
+            out << render(template: "/tpl/autoHelp");
+            session["help"] = false;
+        }
+    }
 }

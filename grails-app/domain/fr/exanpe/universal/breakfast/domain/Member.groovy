@@ -31,6 +31,7 @@ class Member {
 
     static mapping = {
         lastBreakfast type:'date'
+        team index: 'idx_member_team'
     }
 
     static namedQueries = {
@@ -46,6 +47,17 @@ class Member {
             order "scaleValue", "asc"
             order "lastBreakfast", "asc"
             order "id", "asc"//first registered
+        }
+        findByTeamAndNameCI{ team, name ->
+            eq "team", team
+            eq 'name', name, ignoreCase: true
+        }
+        countActives{ team ->
+            eq 'team', team
+            eq 'active', true
+            projections {
+                count("id")
+            }
         }
     }
 

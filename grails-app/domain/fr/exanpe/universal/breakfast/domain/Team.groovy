@@ -38,9 +38,11 @@ class Team {
     ]
 
     static mapping = {
+        username index: 'idx_team_username'
+        mail index: 'idx_team_mail'
         members cascade: 'all-delete-orphan'
         history cascade : 'all-delete-orphan'
-        configuration cascade : 'all-delete-orphan'
+        configuration cascade : 'all-delete-orphan', index: 'idx_team_configuration'
         password column: '`password`'
         lastConnection type : 'timestamp'
         breakfastScheduledDate type : 'date'
@@ -62,6 +64,7 @@ class Team {
         findByMailCI { mail ->
             eq 'mail', mail, ignoreCase: true
         }
+
     }
 
     Set<Role> getAuthorities() {

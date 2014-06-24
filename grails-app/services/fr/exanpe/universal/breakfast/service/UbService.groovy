@@ -96,7 +96,7 @@ class UbService {
         return res;
     }
 
-    def getTogether(String message, String location) {
+    def gather(String message, String location) {
         def t = Team.get(springSecurityService.currentUser.id)
         t.workflowState = WorkflowState.GATHER
         t.save()
@@ -115,13 +115,13 @@ class UbService {
                 }
             }
 
-            def mail = t.configuration.togetherMail
-            def mailSubject = t.configuration.togetherMailSubject
+            def mail = t.configuration.gatheringMail
+            def mailSubject = t.configuration.gatheringMailSubject
 
             mailService.sendMail {
                 to mails
-                subject ubTemplateEngineService.merge("together", mailSubject, model)
-                html ubTemplateEngineService.merge("together", mail, model)
+                subject ubTemplateEngineService.merge("gather", mailSubject, model)
+                html ubTemplateEngineService.merge("gather", mail, model)
             }
         }
     }

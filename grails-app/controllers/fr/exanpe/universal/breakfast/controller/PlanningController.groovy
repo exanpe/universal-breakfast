@@ -6,10 +6,12 @@ import fr.exanpe.universal.breakfast.domain.Team
 class PlanningController {
 
     def index() {
-        //TODO UrlMapping
         if(params.teamName){
-
             Team team = Team.findByUsernameCI(params.teamName).get();
+
+            if(!team.configuration.planningEnabled){
+                return;
+            }
 
             def members = Member.getListOrdered(team).list();
 

@@ -102,7 +102,7 @@ ub.history.perPage=10
 grails.plugins.twitterbootstrap.fixtaglib = true
 
 ub.template.mail.prepare = "mails/prepareMail.html"
-ub.template.mail.together = "mails/togetherMail.html"
+ub.template.mail.gathering = "mails/gatheringMail.html"
 
 ub.security.salt = "UniversalBreakfast!2014"
 
@@ -129,7 +129,7 @@ templates = {
     }
 
     template id:"prepare", props : ["breakfastdate", "message"]
-    template id:"together", props : ["location", "message"]
+    template id:"gather", props : ["location", "message"]
 }
 
 environments {
@@ -210,12 +210,13 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/images/**':                    ['permitAll'],
         '/**/favicon.ico':                  ['permitAll'],
         '/simpleCaptcha/**':                ['permitAll'],
+        '/jawr/**':                         ['permitAll'],
         '/register/**':                     ['permitAll'],
         '/planning/**':                      ['permitAll'],//planning
-        '/contact/**':                      ['permitAll'],//planning
+        '/card/**':                         ['permitAll'],//card
         //user URL
         '/complete/**':                      ['ROLE_USER'],
-        '/getTogether/**':                   ['ROLE_USER'],
+        '/gather/**':                        ['ROLE_USER'],
         '/manage/**':                        ['ROLE_USER'],
         '/prepare/**':                       ['ROLE_USER'],
         '/route/**':                         ['ROLE_USER'],
@@ -247,3 +248,21 @@ simpleCaptcha {
 
 // GA conf
 google.analytics.webPropertyID = "UA-xxxxxx-x"
+
+//http://mrhaki.blogspot.fr/2011/11/grails-goodness-internationalize.html
+jawr {
+    js {
+        // Specific mapping to disable resource handling by plugin.
+        mapping = '/jawr/'
+
+        bundle {
+            lib {
+                // Bundle id is used in views.
+                id = '/i18n/messages.js'
+
+                // Tell which messages need to localized in Javascript.
+                mappings = 'messages:grails-app.i18n.messages[ub.js]'
+            }
+        }
+    }
+}

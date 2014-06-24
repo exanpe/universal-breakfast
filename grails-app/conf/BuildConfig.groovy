@@ -79,5 +79,8 @@ grails.project.dependency.resolution = {
 
         // GA
         compile ":google-analytics:2.3.3"
+
+        //i18n in js
+        compile ":jawr:3.5.1"
     }
 }

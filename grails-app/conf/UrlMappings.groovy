@@ -13,6 +13,20 @@ class UrlMappings {
                 teamName nullable: false, blank: false
             }
         }
+        "/card/$teamName/$memberName(.$format)?"{
+            controller = 'card'
+            action = 'member'
+            constraints {
+                teamName nullable: false, blank: false
+            }
+        }
+        "/card/$teamName(.$format)?"{
+            controller = 'card'
+            action = 'team'
+            constraints {
+                teamName nullable: false, blank: false
+            }
+        }
 
         "/"(controller: "home")
         "500"(view:'/error')

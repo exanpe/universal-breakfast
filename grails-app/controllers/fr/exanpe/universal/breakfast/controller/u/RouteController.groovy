@@ -16,7 +16,7 @@ class RouteController {
                 redirect( controller: "prepare")
                 return;
             case WorkflowState.PREPARE :
-                redirect( controller: "getTogether")
+                redirect( controller: "gather")
                 return;
             case WorkflowState.GATHER :
                 redirect( controller: "complete")

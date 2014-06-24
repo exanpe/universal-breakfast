@@ -41,7 +41,16 @@
                 <g:if test="${team}">
                     <blockquote>
                         <p>
-                            <g:message code="ub.planning.team.label"/> : ${team.teamName}<br/>
+                            <g:message code="ub.planning.team.label"/> :
+
+                            <g:if test="${team.configuration.cardEnabled}">
+                                <g:link uri="/card/${team.teamName}">${team.teamName}</g:link>
+                            </g:if>
+                            <g:else>
+                                ${team.teamName}
+                            </g:else>
+
+                            <br/>
                         </p>
                     </blockquote>
                     <blockquote>
@@ -61,7 +70,16 @@
                     <ul class="list-group">
                         <g:each in="${members}" var="member" status="i">
                             <li class="list-group-item member-active-${member.active} member-preparing-${member.preparing}">
-                                <span class="badge" style="float:none">${i+1}</span> ${member.name}
+                                <span class="badge" style="float:none">${i+1}</span>
+
+                                <g:if test="${team.configuration.cardEnabled}">
+                                    <g:link uri="/card/${team.teamName}/${member.name}">
+                                        ${member.name}
+                                    </g:link>
+                                </g:if>
+                                <g:else>
+                                    ${member.name}
+                                </g:else>
                             </li>
                         </g:each>
                     </ul>

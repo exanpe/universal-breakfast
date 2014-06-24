@@ -17,12 +17,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${createLinkTo(dir:'')}">Home</a></li>
+                <li><a href="${createLinkTo(dir:'')}"><g:message code="default.home.label"/></a></li>
                 <sec:ifNotLoggedIn>
-                    <li><g:link controller="home" action="contact">Contact</g:link></li>
+                    <li><g:link controller="home" action="contact"><g:message code="ub.contact.title"/></g:link></li>
                 </sec:ifNotLoggedIn>
                 <sec:ifLoggedIn>
-                    <li><a href="#"><ub:teamName /></a></li>
+                    <li><a href="#" onclick="hopscotch.startTour(tour)"><g:message code="ub.help.label"/></a></li>
+                    <li><g:link controller="manage"><ub:teamName /></g:link></li>
                     <li><a href="${createLink(controller: 'logout')}"><i class="fa fa-power-off"></i></a></li>
                 </sec:ifLoggedIn>
             </ul>

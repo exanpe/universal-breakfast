@@ -10,8 +10,14 @@ class AccountController {
     SpringSecurityService springSecurityService
 
     def index() {
+
+        def team = Team.get(springSecurityService.currentUser.id)
+        //eager load
+        def conf = team.configuration
+
         params.mail = springSecurityService.currentUser?.mail
-        [params: params]
+
+        [params: params, command:flash?.command, team:team]
     }
 
     def update = { AccountCommand command ->
@@ -21,22 +27,55 @@ class AccountController {
             command.errors.allErrors.each {
                 log.debug "error while update team: " + it
             }
-            render(view: 'index', model: [command: command])
+            flash.command = command
+            redirect(action: 'index')
             return
         }
         else {
             Team team = new Team(params)
             ubService.updateTeam(springSecurityService.currentUser?.username, team)
             flash.message = "ub.account.update.success"
-            render(view: 'index')
+            redirect(action: 'index')
             return
         }
 
     }
 
+    def privacy = {
+        log.debug "Account privacy action params: " + params
+
+        def conf = Team.get(springSecurityService.currentUser.id).configuration
+        conf.cardEnabled = params.cardEnabled
+        conf.planningEnabled = params.planningEnabled
+        conf.save(flush:true)
+
+        flash.message = "ub.account.update.success"
+
+        redirect(action: 'index')
+    }
+
+    def mail = {
+        log.debug "Account mail action params: " + params
+
+        def conf = Team.get(springSecurityService.currentUser.id).configuration
+        conf.sendMail = params.sendMail
+
+        conf.prepareMailSubject = params.prepareMailSubject
+        conf.prepareMail = params.prepareMail
+
+        conf.gatheringMailSubject = params.gatheringMailSubject
+        conf.gatheringMail = params.gatheringMail
+
+        conf.save(flush:true)
+
+        flash.message = "ub.account.update.success"
+
+        redirect(action: 'index')
+    }
+
     def delete() {
         // TODO : remove account
-        render(view: 'index')
+        redirect(action: 'home')
     }
 }
 

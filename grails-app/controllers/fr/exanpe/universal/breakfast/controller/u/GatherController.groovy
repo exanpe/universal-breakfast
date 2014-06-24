@@ -2,7 +2,7 @@ package fr.exanpe.universal.breakfast.controller.u
 
 import fr.exanpe.universal.breakfast.domain.Team
 
-class GetTogetherController {
+class GatherController {
 
     def springSecurityService
 
@@ -16,10 +16,10 @@ class GetTogetherController {
     }
 
     def gather(){
-        ubService.getTogether(params?.message, params?.location)
+        ubService.gather(params?.message, params?.location)
 
         flash.sent = 1
 
-        redirect(controller: "getTogether", action:"index")
+        redirect(controller: "gather", action:"index")
     }
 }
