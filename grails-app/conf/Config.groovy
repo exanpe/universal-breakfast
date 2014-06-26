@@ -149,7 +149,7 @@ environments {
 
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://ubtest-exanpe.rhcloud.com"
 
         // Session monitoring conf
         ub.session.max.count = 50
@@ -260,7 +260,7 @@ jawr {
                 // Bundle id is used in views.
                 id = '/i18n/messages.js'
 
-                // Tell which messages need to localized in Javascript.
+                // Tell which messages need to localized in Javascript.''
                 mappings = 'messages:grails-app.i18n.messages[ub.js]'
             }
         }
