@@ -1,0 +1,33 @@
+<project name="openshift-binary-tar.gz" default="targz">
+
+    <!-- Before runnning this task, execute :
+        grails -Dgrails.env=production war
+    -->
+    <target name="targz">
+
+        <tstamp>
+            <format property="time" pattern="yyyyMMdd_hhmm" locale="en,GB"/>
+        </tstamp>
+
+        <delete dir="openshift_work"/>
+        <mkdir dir="openshift_work/build_dependencies"/>
+        <mkdir dir="openshift_work/dependencies/jbossews/webapps"/>
+
+        <!-- enable java7 -->
+        <mkdir dir="openshift_work/repo/.openshift/markers/"/>
+        <touch file="openshift_work/repo/.openshift/markers/java7"/>
+
+        <copy todir="openshift_work/dependencies/jbossews/webapps">
+            <fileset dir="target">
+                <include name="*.war"/>
+            </fileset>
+        </copy>
+
+        <tar compression="gzip" destfile="rhc-${time}.tar.gz">
+            <fileset dir="openshift_work">
+                <include name="**/*"/>
+            </fileset>
+        </tar>
+    </target>
+
+</project>
