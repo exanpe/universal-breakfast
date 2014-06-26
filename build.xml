@@ -6,7 +6,7 @@
     <target name="targz">
 
         <tstamp>
-            <format property="time" pattern="yyyyMMdd_hhmm" locale="en,GB"/>
+            <format property="time" pattern="yyyyMMdd_HHmm" locale="en,GB"/>
         </tstamp>
 
         <delete dir="openshift_work"/>
