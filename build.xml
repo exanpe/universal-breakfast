@@ -17,11 +17,7 @@
         <mkdir dir="openshift_work/repo/.openshift/markers/"/>
         <touch file="openshift_work/repo/.openshift/markers/java7"/>
 
-        <copy todir="openshift_work/dependencies/jbossews/webapps">
-            <fileset dir="target">
-                <include name="*.war"/>
-            </fileset>
-        </copy>
+        <copy file="target/universal-breakfast.war" tofile="openshift_work/dependencies/jbossews/webapps/ROOT.war"/>
 
         <tar compression="gzip" destfile="rhc-${time}.tar.gz">
             <fileset dir="openshift_work">
