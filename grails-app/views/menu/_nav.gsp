@@ -5,19 +5,19 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
             </button>
-            <a href="${createLinkTo(dir:'')}" class="navbar-brand">
+            <g:link controller="home" action="index" class="navbar-brand">
                 <span id="logo" class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="logo-center fa fa-coffee fa-stack-1x"></i>
                 </span>
                 <g:message code="ub.name" />
-            </a>
+            </g:link>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${createLinkTo(dir:'')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link controller="home" action="index"><g:message code="default.home.label"/></g:link></li>
                 <sec:ifNotLoggedIn>
                     <li><g:link controller="home" action="contact"><g:message code="ub.contact.title"/></g:link></li>
                 </sec:ifNotLoggedIn>
