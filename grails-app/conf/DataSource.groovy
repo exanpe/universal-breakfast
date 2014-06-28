@@ -31,31 +31,10 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "create"
-            url = "jdbc:mysql://"+System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/ubtest"
-            username = "adminAwfRMnU"
-            password = "9h4i7AcsaC1T"
+            dbCreate = "update"
+            jndiName = "java:comp/env/jdbc/MySQLDS"
             driverClassName = "com.mysql.jdbc.Driver"
-            properties {
-               // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
-               jmxEnabled = true
-               initialSize = 5
-               maxActive = 50
-               minIdle = 5
-               maxIdle = 25
-               maxWait = 10000
-               maxAge = 10 * 60000
-               timeBetweenEvictionRunsMillis = 5000
-               minEvictableIdleTimeMillis = 60000
-               validationQuery = "SELECT 1"
-               validationQueryTimeout = 3
-               validationInterval = 15000
-               testOnBorrow = true
-               testWhileIdle = true
-               testOnReturn = false
-               jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
-            }
+            dialect = "org.hibernate.dialect.MySQL5Dialect"
         }
     }
 }

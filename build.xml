@@ -14,9 +14,12 @@
         <mkdir dir="openshift_work/dependencies/jbossews/webapps"/>
 
         <!-- enable java7 -->
-        <mkdir dir="openshift_work/repo/.openshift/markers/"/>
-        <touch file="openshift_work/repo/.openshift/markers/java7"/>
 
+        <copy todir="openshift_work/repo/.openshift/">
+            <fileset dir=".openshift/" includes="**"/>
+        </copy>
+
+        <copy file="server.xml" todir="openshift_work/repo/.openshift/config/"/>
         <copy file="target/universal-breakfast.war" tofile="openshift_work/dependencies/jbossews/webapps/ROOT.war"/>
 
         <tar compression="gzip" destfile="rhc-${time}.tar.gz">

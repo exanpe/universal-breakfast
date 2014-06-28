@@ -4,10 +4,7 @@ import grails.util.Holders
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-grails.config.locations = [ "classpath:${appName}-config.properties",
-                             "classpath:${appName}-config.groovy",
-                             "file:${userHome}/.grails/${appName}-config.properties",
-                             "file:${userHome}/.grails/${appName}-config.groovy"]
+grails.config.locations = ["file:"+System.getenv("OPENSHIFT_DATA_DIR")+"ub.properties"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -104,8 +101,6 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 ub.template.mail.prepare = "mails/prepareMail.html"
 ub.template.mail.gathering = "mails/gatheringMail.html"
 
-ub.security.salt = "UniversalBreakfast!2014"
-
 ub.mail="universal-breakfast@gmail.com"
 ub.github="https://github.com/exanpe/universal-breakfast"
 
@@ -140,26 +135,31 @@ environments {
         // Session monitoring conf
         ub.session.max.count = 5
         grails.serverURL = "http://localhost:8080/universal-breakfast"
+        ub.security.salt = "salt"//just a development value
     }
 
     test{
         grails.mail.disabled=true
         grails.serverURL = "http://www.ub-test.com"
+        ub.security.salt = "salt"//just a development value
     }
 
     production {
         grails.logging.jul.usebridge = false
+        //TODO JMX change with final domain
         grails.serverURL = "http://ubtest-exanpe.rhcloud.com"
 
         // Session monitoring conf
-        ub.session.max.count = 50
+        ub.session.max.count = 100
+
+        //ub.security.salt = "OVERWRITE"
 
         grails {
             mail {
                 host = "smtp.gmail.com"
                 port = 465
                 username = ub.mail
-                password = "TODO"
+                // password = "OVERWRITE"
                 props = ["mail.smtp.auth":"true",
                         "mail.smtp.socketFactory.port":"465",
                         "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
@@ -190,6 +190,7 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
    // debug    'org.springframework.security'
+
 }
 
 // LESS compiler
@@ -231,6 +232,8 @@ grails.plugin.springsecurity.logout.postOnly = false
 
 // Enable event publishing
 grails.plugin.springsecurity.useSecurityEventListener = true
+
+grails.app.context = "/"
 
 // Simple Captcha conf
 simpleCaptcha {
