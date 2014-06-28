@@ -1,0 +1,28 @@
+Install:
+- https://www.openshift.com/developers/rhc-client-tools-install
+- rhc setup
+- see credentials by mail
+
+Application Name : ub
+Domain : exanpe
+
+Build:
+- grails war -Dgrails.env=production
+
+Information sources :
+http://stackoverflow.com/questions/22675894/openshift-binary-deployment-tar-gz-structure
+
+Upload:
+- scp ROOT.war to app-root/data
+- cp app-root/data/ROOT.war app-root/dependencies/jbossews/webapps/
+- SSH ctl_all restart || rhc app-restart ub
+
+External configuration :
+- app-root/data/ub.properties
+
+JBoss logs :
+- rhc tail ubtest -o '-n 400' -f app-root/logs/jbossews.log
+
+Access :
+- application : http://ub-exanpe.rhcloud.com
+- database (ko with firefox) : https://ub-exanpe.rhcloud.com/phpmyadmin/
