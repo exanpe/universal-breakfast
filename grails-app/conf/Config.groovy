@@ -4,7 +4,11 @@ import grails.util.Holders
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-grails.config.locations = ["file:"+System.getenv("OPENSHIFT_DATA_DIR")+"ub.properties"]
+grails.config.locations = [
+        "file:${userHome}/.grails/ub.groovy",
+        "file:${userHome}/.grails/ub.properties",
+        "file:"+System.getenv("OPENSHIFT_DATA_DIR")+"ub.properties"
+]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
