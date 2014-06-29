@@ -74,7 +74,9 @@ class AccountController {
     }
 
     def delete() {
-        // TODO : remove account
+        ubService.disableAccount(springSecurityService.currentUser.id)
+        flash.message = message(code: "ub.account.delete.confirm.msg")
+        redirect controller: 'home', action: 'index'
         redirect(action: 'home')
     }
 }

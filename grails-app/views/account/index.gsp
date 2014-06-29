@@ -152,10 +152,28 @@
     <g:form class="form-horizontal" controller="account" action="delete">
         <div class="form-group">
             <div class="col-xs-offset-4 col-xs-4">
-                <button type="submit" class="btn btn-primary"><g:message code="ub.account.delete.button" /> </button>
+                <button id="delete-account" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#delete-confirm"><g:message code="ub.account.delete.button" /> </button>
             </div>
         </div>
     </g:form>
+
+    <div id="delete-confirm" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><g:message code="ub.account.delete.confirm.title" /> </h4>
+            </div>
+            <div class="modal-body">
+                <g:message code="ub.account.delete.confirm.body.label" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal"><g:message code="ub.account.delete.confirm.no.label" /></button>
+                <button type="button" id="confirm-delete-button" class="btn btn-primary"><g:message code="ub.account.delete.confirm.yes.label" /></button>
+            </div>
+        </div>
+       </div>
+    </div>
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -168,6 +186,17 @@
             });
             $('#sendMail').on('ifUnchecked', function(event){
                 $('#mailCustomization').slideUp();
+            });
+
+            $('#delete-account').click(function(e) {
+                e.stopPropagation();
+                $('#delete-confirm').modal('show');
+                return false;
+            });
+
+            $('#confirm-delete-button').click(function(e) {
+                $('#delete-account').closest('form').submit();
+                return;
             });
         })
     </script>

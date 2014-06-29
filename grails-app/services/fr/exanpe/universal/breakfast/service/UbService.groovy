@@ -189,7 +189,7 @@ class UbService {
 
     def isAccountTokenValid(Long teamId, String token) {
         def team = Team.get(teamId)
-        if (team == null || team.enabled) {
+        if (team == null || team.enabled || team.accountLocked) {
             return false;
         }
 
@@ -241,4 +241,11 @@ class UbService {
         }
     }
 
+    def disableAccount(Long teamId) {
+        Team team = Team.get(teamId)
+        team.enabled = false
+        team.accountLocked = true
+        team.save()
+        return team
+    }
 }
