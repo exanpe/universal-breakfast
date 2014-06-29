@@ -101,7 +101,7 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 ub.template.mail.prepare = "mails/prepareMail.html"
 ub.template.mail.gathering = "mails/gatheringMail.html"
 
-ub.mail="universal-breakfast@gmail.com"
+ub.mail="exanpe@gmail.com"
 ub.github="https://github.com/exanpe/universal-breakfast"
 
 grails {
@@ -134,20 +134,20 @@ environments {
 
         // Session monitoring conf
         ub.session.max.count = 5
-        grails.serverURL = "http://localhost:8080/universal-breakfast"
+        grails.serverURL = "http://localhost:8080"
         ub.security.salt = "salt"//just a development value
     }
 
     test{
         grails.mail.disabled=true
-        grails.serverURL = "http://www.ub-test.com"
+        grails.serverURL = "http://localhost:8080"
         ub.security.salt = "salt"//just a development value
     }
 
     production {
         grails.logging.jul.usebridge = false
         //TODO JMX change with final domain
-        grails.serverURL = "http://ubtest-exanpe.rhcloud.com"
+        grails.serverURL = "http://ub-exanpe.rhcloud.com"
 
         // Session monitoring conf
         ub.session.max.count = 100
