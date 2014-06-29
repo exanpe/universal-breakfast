@@ -21,7 +21,7 @@ External configuration :
 - app-root/data/ub.properties
 
 JBoss logs :
-- rhc tail ubtest -o '-n 400' -f app-root/logs/jbossews.log
+- rhc tail ub -o '-n 400' -f app-root/logs/jbossews.log
 
 Access :
 - application : http://ub-exanpe.rhcloud.com
