@@ -24,7 +24,7 @@
                             <i class="fa fa-calendar-o"></i> &nbsp;&nbsp;<g:message code="ub.home.planning.label"/>
                         </g:link><br/>
                         <a href="#" class="button" data-target="#carousel" data-slide-to="2">
-                            <i class="fa fa-edit"></i> &nbsp;&nbsp<g:message code="ub.home.register.label" />
+                            <i class="fa fa-edit"></i> &nbsp;&nbsp;<g:message code="ub.home.register.label" />
                         </a>
                     </div>
                 </div>
@@ -34,8 +34,12 @@
                     <div class="fill"></div>
                     <div class="carousel-caption">
                         <h2><g:message code="ub.home.title" /></h2>
-                        <a href="#" class="button" data-target="#carousel" data-slide-to="0"><g:message code="ub.home.label" /></a>
-                        <a href="#" class="button" data-target="#carousel" data-slide-to="2"><g:message code="ub.home.register.label" /></a>
+                        <a href="#" class="button" data-target="#carousel" data-slide-to="0">
+                            <i class="fa fa-home"></i> &nbsp;&nbsp;<g:message code="ub.home.label" />
+                        </a>
+                        <a href="#" class="button" data-target="#carousel" data-slide-to="2">
+                            <i class="fa fa-edit"></i> &nbsp;&nbsp;<g:message code="ub.home.register.label" />
+                        </a>
                         <div class="col-md-7 col-sm-7 sign-form">
                             <g:render template="/login/login" />
                         </div>
@@ -47,8 +51,12 @@
                     <div class="fill"></div>
                     <div class="carousel-caption">
                         <h2><g:message code="ub.home.title" /></h2>
-                        <a href="#" class="button" data-target="#carousel" data-slide-to="0"><g:message code="ub.home.label" /></a>
-                        <a href="#" class="button" data-target="#carousel" data-slide-to="1"><g:message code="ub.home.login.label" /></a>
+                        <a href="#" class="button" data-target="#carousel" data-slide-to="0">
+                            <i class="fa fa-home"></i> &nbsp;&nbsp;<g:message code="ub.home.label" />
+                        </a>
+                        <a href="#" class="button" data-target="#carousel" data-slide-to="1">
+                            <i class="fa fa-lg fa-lock"></i> &nbsp;&nbsp;<g:message code="ub.home.login.label" />
+                        </a>
                         <div class="col-md-7 col-sm-7 sign-form">
                             <g:render template="/login/register" />
                         </div>
