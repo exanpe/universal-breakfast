@@ -10,9 +10,11 @@
 			<g:renderException exception="${exception}" />
 		</g:if>
 		<g:else>
-			<ul class="errors">
-				<li>An error has occurred</li>
-			</ul>
+            <div style="height:450px">
+                <ul class="errors">
+                    <li>An error has occurred</li>
+                </ul>
+            </div>
 		</g:else>
 	</body>
 </html>
