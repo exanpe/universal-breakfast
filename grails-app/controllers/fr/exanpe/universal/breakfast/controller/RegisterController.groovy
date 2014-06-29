@@ -22,7 +22,7 @@ class RegisterController {
             return
         }
         else {
-            Team team = ubService.createTeam(new Team(params))
+            Team team = ubService.createTeam(new Team(username: params.username, password: params.password, mail: params.mail, enabled : false))
             ubService.askForAccountConfirmation(team.id)
             flash.message = message(code: "ub.register.account.to.confirm", args: [team.teamName], default: '')
             redirect controller: 'home', action: 'index'
