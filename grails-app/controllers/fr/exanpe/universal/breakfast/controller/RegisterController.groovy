@@ -35,6 +35,8 @@ class RegisterController {
         if (valid) {
             Team team = ubService.enableAccount(teamId)
             springSecurityService.reauthenticate(team.username, team.password)
+            ubService.onConnection();
+            session["help"] = true
             redirect controller: 'login', action: 'auth'
         }
         else {

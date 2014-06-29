@@ -57,5 +57,16 @@
             </div>
         </div>
 
+        <g:javascript>
+            $('#carousel').on('slid.bs.carousel', function(){
+                if($('#username').is(":visible")){
+                    //fix bug on transition
+                    window.setTimeout(function(){
+                        $('#username').focus();
+                    },500);
+                }
+            });
+        </g:javascript>
+
 	</body>
 </html>
