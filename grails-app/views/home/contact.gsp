@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-xs-4">
                             <ub:required>
-                                <g:message code="ub.contact.name.label"/>
+                                <g:message code="contactCommand.name.label"/>
                             </ub:required>
                         </label>
                         <div class="col-xs-6">
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="mail" class="control-label col-xs-4">
                             <ub:required>
-                                <g:message code="ub.contact.mail.label"/>
+                                <g:message code="contactCommand.mail.label"/>
                             </ub:required>
                         </label>
                         <div class="col-xs-6">
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label for="message" class="control-label col-xs-4">
                             <ub:required>
-                                <g:message code="ub.contact.message.label"/>
+                                <g:message code="contactCommand.message.label"/>
                             </ub:required>
                         </label>
                         <div class="col-xs-6">
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label for='captcha' class="control-label col-xs-4">
                             <ub:required>
-                                <g:message code="ub.register.captcha.label" />
+                                <g:message code="contactCommand.captcha.label" />
                             </ub:required>
                         </label>
                         <div class="col-xs-4">
