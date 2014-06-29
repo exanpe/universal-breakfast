@@ -3,6 +3,7 @@ package fr.exanpe.universal.breakfast.controller.u
 import fr.exanpe.universal.breakfast.domain.Team
 import fr.exanpe.universal.breakfast.service.UbService
 import grails.plugin.springsecurity.SpringSecurityService
+import org.springframework.security.core.context.SecurityContextHolder
 
 class AccountController {
 
@@ -75,9 +76,10 @@ class AccountController {
 
     def delete() {
         ubService.disableAccount(springSecurityService.currentUser.id)
+        SecurityContextHolder.clearContext()
+        session.invalidate()
         flash.message = message(code: "ub.account.delete.confirm.msg")
         redirect controller: 'home', action: 'index'
-        redirect(action: 'home')
     }
 }
 
