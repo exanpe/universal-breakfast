@@ -476,12 +476,33 @@ blockquote p {
   color: #7F8C8D;
 }
 
+/**
+ * Sticky footer
+ * http://getbootstrap.com/examples/sticky-footer-navbar/
+ */
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -163px;
+  /* Pad bottom by footer height */
+  padding: 0 0 163px;
+}
+
+.back #wrap {
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
 /* Footer Styles */
 
 .footer {
   background: @footer-bg-color;
   padding: 20px 0;
   font-size: 12px;
+  height: 60px;
 }
 
 .footer p {
@@ -636,4 +657,10 @@ div.hopscotch-bubble h3 {
 
 .hopscotch-bubble * {
   box-sizing: content-box;
+}
+
+.ub-view {
+  .form-group {
+    margin-bottom: 0;
+  }
 }

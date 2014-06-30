@@ -27,11 +27,12 @@
         <ga:trackPageview />
 	</head>
 	<body>
-        
-        <section id="home"></section>
-        <g:render template="/menu/nav" />
 
-		<g:layoutBody/>
+        <div id="wrap">
+            <section id="home"></section>
+            <g:render template="/menu/nav" />
+            <g:layoutBody/>
+        </div>
 
         <!-- Contact -->
         <g:if test="${actionName != "contact"}">
@@ -55,5 +56,6 @@
         <g:render template="/menu/footer" />
 
         <r:layoutResources />
+
 	</body>
 </html>

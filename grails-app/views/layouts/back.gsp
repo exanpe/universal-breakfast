@@ -35,6 +35,8 @@
 	</head>
 	<body class="back">
 
+        <div id="wrap">
+
         <!-- Nav bar -->
         <g:render template="/menu/nav" />
 
@@ -71,6 +73,8 @@
                 </div>
 
             </div>
+        </div>
+
         </div>
 
         <!-- Footer -->
