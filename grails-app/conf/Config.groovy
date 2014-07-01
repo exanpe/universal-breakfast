@@ -99,7 +99,7 @@ grails.gorm.failOnError = true
 
 grails.databinding.dateFormats = ['MM-dd-yyyy', 'dd/MM/yyyy']
 
-ub.history.perPage=10
+ub.paginate.items.perPage=10
 grails.plugins.twitterbootstrap.fixtaglib = true
 
 ub.template.mail.prepare = "mails/prepareMail.html"

@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <g:paginate total="${total}" max="${grailsApplication.config.ub.history.perPage}"/>
+            <g:paginate total="${total}" max="${grailsApplication.config.ub.paginate.items.perPage}"/>
         </div>
         <div class="col-sm-6">
             <g:link class="btn btn-primary active right" action="clear">${g.message(code:'ub.history.clear')}</g:link>
@@ -49,7 +49,7 @@
         </tbody>
     </table>
 
-    <g:paginate total="${total}"  max="${grailsApplication.config.ub.history.perPage}"/>
+    <g:paginate total="${total}"  max="${grailsApplication.config.ub.paginate.items.perPage}"/>
 </g:else>
 
 </body>

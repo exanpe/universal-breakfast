@@ -11,10 +11,49 @@
         <p><g:message code="ub.manage.help" /></p>
     </blockquote>
 
-    <p>Content of the page....</p>
 
-    TODO : Search and CRUD member with table<br/>
-    Add : activate or deactivate of member !
+<g:if test="${total == 0}">
+    ${message(code : 'ub.manage.members.empty')}
+</g:if>
+<g:else>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <g:paginate total="${total}" max="${grailsApplication.config.ub.members.perPage}"/>
+        </div>
+        <div class="col-sm-6 text-right">
+            <g:link class="btn btn-default action" action="create"><i class="fa fa-plus fa-inverse"></i>&nbsp;&nbsp;<g:message code="ub.manage.members.add" /></g:link>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>${g.message('code' : 'ub.manage.table.member')}</th>
+            <th>${g.message('code' : 'ub.manage.table.position')}</th>
+            <th>${g.message('code' : 'ub.manage.table.member.lastBreakfast')}</th>
+            <th>${g.message('code' : 'ub.manage.table.member.actions')}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each status="i" in="${members}" var="m">
+            <!-- Alternate CSS classes for the rows. -->
+            <tr>
+                <td><g:link controller="manage" action="show" id="${m.id}">${m.name}</g:link></td>
+                <td>${i + 1}</td>
+                <td><g:formatDate date="${m.lastBreakfast}"/></td>
+                <td>
+                    <g:link controller="manage" action="edit" id="${m.id}" class="btn btn-info"><i class="fa fa-edit" title="${message(code: 'default.button.edit.label')}"></i></g:link>
+                    <g:link controller="manage" action="disable" id="${m.id}" class="btn btn-info"><i class="fa fa-ban" title="${message(code: 'default.button.disable.label')}"></i></g:link>
+                    <g:link controller="manage" action="delete" id="${m.id}" class="btn btn-default"><i class="fa fa-trash-o fa-inverse" title="${message(code: 'default.button.delete.label')}"></i></g:link>
+                </td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+
+    <g:paginate total="${total}"  max="${grailsApplication.config.ub.paginate.items.perPage}"/>
+</g:else>
 
 </body>
 </html>

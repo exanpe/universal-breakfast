@@ -20,7 +20,7 @@ class HistoryService {
     def list(Integer from = 0){
         Team team = springSecurityService.currentUser
 
-        return History.findAllByTeam(team, [sort : "date", order : "desc", offset : from, max : grailsApplication.config.ub.history.perPage])
+        return History.findAllByTeam(team, [sort : "date", order : "desc", offset : from, max : grailsApplication.config.ub.paginate.items.perPage])
     }
 
     def countEntries(){
