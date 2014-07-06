@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<div class="single contact">
+
 <div class="section-header">
     <div class="container">
         <div class="row">
@@ -16,7 +18,7 @@
     </div>
 </div>
 
-<div class="container container-int">
+<div class="content container container-int">
     <div class="row">
         <div class="col-md-12 col-sm-12">
 
@@ -83,6 +85,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

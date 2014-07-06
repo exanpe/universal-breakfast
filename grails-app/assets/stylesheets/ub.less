@@ -11,6 +11,7 @@
 @footer-bg-color:       #2c3e50;
 @gray-dark:             #666;
 @gray-light:            #aaa;
+@alert-danger-color:    #a94442;
 @font-size-h1:          floor((@font-size-base * 2.3)); // ~32px
 
 /* Common Styles */
@@ -489,17 +490,22 @@ blockquote p {
   margin: 0 auto -163px;
   /* Pad bottom by footer height */
   padding: 0 0 163px;
-}
 
-.back #wrap {
-  margin: 0 auto -60px;
-  /* Pad bottom by footer height */
-  padding: 0 0 60px;
-  background: url("../images/bg/jave-cafe-food-30144-bw.jpg") no-repeat;
+  background: url("../images/bg/jave-cafe-food-30144.jpg") no-repeat;
   background-attachment: fixed;
 }
 
-.back .main .content {
+
+.back #wrap {
+  background: url("../images/bg/jave-cafe-food-30144-bw.jpg") no-repeat;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+
+.back .main .content, .single .content {
   /* Fallback for web browsers that don't support RGBa */
   background-color: rgb(66, 63, 92);
   /* RGBa with 0.3 opacity */
@@ -522,6 +528,14 @@ blockquote p {
 
   .list-group label {
     color: @gray-dark;
+  }
+
+  .reset {
+    color: #ffffff;
+  }
+
+  .alert ul ul li {
+    color: @alert-danger-color;
   }
 }
 
