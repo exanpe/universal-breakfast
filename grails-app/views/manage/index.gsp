@@ -32,6 +32,7 @@
             <th>${g.message('code' : 'ub.manage.table.member')}</th>
             <th>${g.message('code' : 'ub.manage.table.position')}</th>
             <th>${g.message('code' : 'ub.manage.table.member.lastBreakfast')}</th>
+            <th>${g.message('code' : 'ub.manage.table.member.isactive')}</th>
             <th>${g.message('code' : 'ub.manage.table.member.actions')}</th>
         </tr>
         </thead>
@@ -43,9 +44,16 @@
                 <td>${i + 1}</td>
                 <td><g:formatDate date="${m.lastBreakfast}"/></td>
                 <td>
+                    <g:if test="${m.active}">
+                        <i class="fa fa-check"></i>
+                    </g:if>
+                </td>
+                <td>
                     <g:link controller="manage" action="edit" id="${m.id}" class="btn btn-info"><i class="fa fa-edit" title="${message(code: 'default.button.edit.label')}"></i></g:link>
-                    <g:link controller="manage" action="disable" id="${m.id}" class="btn btn-info"><i class="fa fa-ban" title="${message(code: 'default.button.disable.label')}"></i></g:link>
-                    <g:link controller="manage" action="delete" id="${m.id}" class="btn btn-default"><i class="fa fa-trash-o fa-inverse" title="${message(code: 'default.button.delete.label')}"></i></g:link>
+                    <g:link controller="manage" action="toggle" id="${m.id}" class="btn btn-info">
+                        <i class="fa fa-ban" title="${message(code: 'default.button.disable.label')}"></i>
+                    </g:link>
+                    <g:link controller="manage" action="delete" id="${m.id}" class="btn btn-default" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"><i class="fa fa-trash-o fa-inverse" title="${message(code: 'default.button.delete.label')}"></i></g:link>
                 </td>
             </tr>
         </g:each>
