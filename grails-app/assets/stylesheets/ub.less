@@ -495,19 +495,33 @@ blockquote p {
   margin: 0 auto -60px;
   /* Pad bottom by footer height */
   padding: 0 0 60px;
-  background: url("../images/bg/jave-cafe-food-30144.jpg") no-repeat ;
+  background: url("../images/bg/jave-cafe-food-30144-bw.jpg") no-repeat;
+  background-attachment: fixed;
 }
 
 .back .main .content {
   /* Fallback for web browsers that don't support RGBa */
   background-color: rgb(66, 63, 92);
   /* RGBa with 0.3 opacity */
-  background-color: rgba(66, 63, 92, 0.5);
-  padding-bottom: 20px;
+  background-color: rgba(66, 63, 92, 0.8);
   padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 
-  label, h2, li, .templateDescription {
+  label, h2, li, .templateDescription, .form-control-static, .text {
     color: white;
+  }
+
+  table {
+    background: white;
+  }
+
+  .form-control {
+    color: black;
+  }
+
+  .list-group label {
+    color: @gray-dark;
   }
 }
 
