@@ -82,6 +82,7 @@
             <div class="col-xs-offset-4 col-xs-4">
                 <br />
                 <g:form url="[controller: 'manage', action:'delete']" method="DELETE">
+                    <g:link class="btn btn-info" controller="manage" action="index"><g:message code="default.button.back.label" /></g:link>
                     <g:link class="btn btn-info" controller="manage" action="edit" id="${memberInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <g:actionSubmit class="btn btn-default action" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
