@@ -13,7 +13,7 @@
 
 <g:if test="${total == 0}">
 
-   ${message(code : 'ub.history.empty')}
+   <span class="text">${message(code : 'ub.history.empty')}</span>
 
 </g:if>
 <g:else>

@@ -26,7 +26,7 @@
 
         <ga:trackPageview />
 	</head>
-	<body>
+	<body class="main">
 
         <div id="wrap">
             <section id="home"></section>
@@ -35,22 +35,20 @@
         </div>
 
         <!-- Contact -->
-        <g:if test="${actionName != "contact"}">
-            <div class="section-colored home" id="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-9 col-sm-8">
-                            <h2><g:message code="ub.home.contact.or.question"/></h2>
-                        </div>
-                        <div class="col-md-3 col-sm-4">
-                            <g:link controller="home" action="contact" class="btn btn-danger btn-lg">
-                                <g:message code="ub.contact.link.label"/>
-                            </g:link>
-                        </div>
+        <div class="section-colored home" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-8">
+                        <h2><g:message code="ub.home.contact.or.question"/></h2>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <g:link controller="home" action="contact" class="btn btn-danger btn-lg">
+                            <g:message code="ub.contact.link.label"/>
+                        </g:link>
                     </div>
                 </div>
             </div>
-        </g:if>
+        </div>
 
         <!-- Footer -->
         <g:render template="/menu/footer" />
