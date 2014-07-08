@@ -43,15 +43,16 @@ class ManageController {
     @Transactional
     def save() {
         def memberInstance = new Member(params)
-        if (memberInstance == null) {
-            notFound()
-            redirect(action: "index")
+
+        memberInstance.validate()
+        if (memberInstance.hasErrors()) {
+            respond memberInstance.errors, view:'create'
             return
         }
 
-
-        if (memberInstance.hasErrors()) {
-            respond memberInstance.errors, view:'create'
+        if (memberInstance == null) {
+            notFound()
+            redirect(action: "index")
             return
         }
 
