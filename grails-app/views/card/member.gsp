@@ -31,10 +31,16 @@
                     </li>
                     <li class="list-group-item">
                         <g:if test="${member.active == true}">
-                            <i class="fa fa-lg fa-thumbs-o-up"></i> <g:message code="ub.member.active"/>
+                            <i class="fa fa-lg fa-thumbs-o-up"></i>
+                            <span class="pull-right">
+                                <g:message code="ub.member.active"/>
+                            </span>
                         </g:if>
                         <g:else>
-                            <i class="fa fa-lg fa-ban"></i> <g:message code="ub.member.inactive"/>
+                            <i class="fa fa-lg fa-ban"></i>
+                            <span class="pull-right">
+                                <g:message code="ub.member.inactive"/>
+                            </span>
                         </g:else>
                     </li>
                     <%-- today or later --%>
@@ -68,14 +74,14 @@
                         </li>
                     </g:if>
                     <li class="list-group-item">
-                        <i class="fa fa-lg fa-ellipsis-h"></i>
+                        <i class="fa fa-lg fa-bar-chart-o"></i>
                         <g:message code="ub.member.breakfastAttended"/>
                         <span class="pull-right">
                             ${member.attendingCount}
                         </span>
                     </li>
                     <li class="list-group-item">
-                        <i class="fa fa-lg fa-ellipsis-h"></i>
+                        <i class="fa fa-lg fa-bar-chart-o"></i>
                         <g:message code="ub.member.breakfastMissed"/>
                         <span class="pull-right">
                             ${member.absenceCount}
