@@ -35,7 +35,7 @@
                 <g:message code="ub.manage.member.active.label"/>
             </label>
             <div class="col-xs-6 form-control-static">
-                ${memberInstance?.active}
+                <i class="fa fa-lg ${memberInstance?.active ? 'fa-check' : '' }"></i>
             </div>
         </div>
         <div class="form-group">
