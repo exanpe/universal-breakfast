@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-offset-4 col-xs-6">
+            <div class="col-xs-offset-4 col-xs-7">
                 <button type="submit" class="btn btn-primary"><g:message code="springSecurity.login.button" /> </button>
                 &nbsp; <g:link class="reset" controller="home" action="password" ><g:message code="ub.home.forgot.password.label" /></g:link>
             </div>
