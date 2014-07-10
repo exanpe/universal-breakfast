@@ -27,7 +27,7 @@
         <asset:javascript src="plugins/respond.js" />
         <asset:javascript src="plugins/scrolltopcontrol.js" />
         <asset:javascript src="hopscotch/hopscotch.min.js" />
-        <jawr:script src="/i18n/messages.js"/>
+        <script type="text/javascript" src="${createLink(controller: "messages", action: "scripts")}"></script>
         <asset:javascript src="ub.js" />
 		<r:layoutResources />
 

@@ -1,3 +1,4 @@
+import fr.exanpe.universal.breakfast.i18n.ExtendedPluginAwareResourceBundleMessageSource
 import fr.exanpe.universal.breakfast.security.UbUserDetailsService
 import fr.exanpe.universal.breakfast.web.UbEventListener
 import fr.exanpe.universal.breakfast.web.UbSessionService
@@ -25,5 +26,9 @@ beans = {
 
     userDetailsService(UbUserDetailsService) {
         grailsApplication = ref('grailsApplication')
+    }
+
+    messageSource(ExtendedPluginAwareResourceBundleMessageSource)  {
+        basenames = "WEB-INF/grails-app/i18n/messages"
     }
 }

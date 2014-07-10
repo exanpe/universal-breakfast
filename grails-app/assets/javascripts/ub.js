@@ -47,66 +47,66 @@ if(window['messages']){
     var tour = {
         id: "tutorial",
         i18n : {
-            nextBtn :  messages.ub.js.tour.nextBtn(),
-            doneBtn : messages.ub.js.tour.doneBtn(),
-            closeTooltip : messages.ub.js.tour.closeTooltip(),
+            nextBtn :  messages['ub.js.tour.nextBtn'],
+            doneBtn : messages['ub.js.tour.doneBtn'],
+            closeTooltip : messages['ub.js.tour.closeTooltip'],
             stepNums : ["!", "!", "!", "!", "1", "2", "3", "..."]
         },
         showPrevButton : false,
         steps: [
             {
                 target: ".navbar",
-                title: messages.ub.js.tour.step.welcome.title(),
-                content: messages.ub.js.tour.step.welcome.content(),
+                title: messages['ub.js.tour.step.welcome.title'],
+                content: messages['ub.js.tour.step.welcome.content'],
                 placement: "bottom",
                 xOffset : "center",
                 arrowOffset : "center"
             },
             {
                 target: ".navbar",
-                title: messages.ub.js.tour.step.welcome2.title(),
-                content: messages.ub.js.tour.step.welcome2.content(),
+                title: messages['ub.js.tour.step.welcome2.title'],
+                content: messages['ub.js.tour.step.welcome2.content'],
                 placement: "bottom",
                 xOffset : "center",
                 arrowOffset : "center"
             },
             {
                 target: ".tour_members",
-                title: messages.ub.js.tour.step.members.title(),
-                content: messages.ub.js.tour.step.members.content(),
+                title: messages['ub.js.tour.step.members.title'],
+                content: messages['ub.js.tour.step.members.content'],
                 placement: "right",
                 yOffset : "center"
             },
             {
                 target: ".sidebar .well",
-                title: messages.ub.js.tour.step.process.title(),
-                content: messages.ub.js.tour.step.process.content(),
+                title: messages['ub.js.tour.step.process.title'],
+                content: messages['ub.js.tour.step.process.content'],
                 placement: "right",
                 yOffset : "center",
                 arrowOffset : "center"
             },
             {
                 target: ".tour_prepare",
-                title: messages.ub.js.tour.step.prepare.title(),
-                content: messages.ub.js.tour.step.prepare.content(),
+                title: messages['ub.js.tour.step.prepare.title'],
+                content: messages['ub.js.tour.step.prepare.content'],
                 placement: "right"
             },
             {
                 target: ".tour_gather",
-                title: messages.ub.js.tour.step.gather.title(),
-                content: messages.ub.js.tour.step.gather.content(),
+                title: messages['ub.js.tour.step.gather.title'],
+                content: messages['ub.js.tour.step.gather.content'],
                 placement: "right"
             },
             {
                 target: ".tour_complete",
-                title: messages.ub.js.tour.step.complete.title(),
-                content: messages.ub.js.tour.step.complete.content(),
+                title: messages['ub.js.tour.step.complete.title'],
+                content: messages['ub.js.tour.step.complete.content'],
                 placement: "right"
             },
             {
                 target: ".tour_settings",
-                title: messages.ub.js.tour.step.settings.title(),
-                content: messages.ub.js.tour.step.settings.content(),
+                title: messages['ub.js.tour.step.settings.title'],
+                content: messages['ub.js.tour.step.settings.content'],
                 placement: "right",
                 yOffset : "center",
                 arrowOffset : "center"

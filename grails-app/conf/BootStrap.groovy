@@ -32,7 +32,7 @@ class BootStrap {
                 new History(team: team, suppliers: "Andrew", date: new Date().minus(i*2), numAttendees: new Random().nextInt(i)).save(flush:true)
 
 
-            def newteam = new Team(username: 'newteam', password: 'te.am', mail: 'newteam@universal-breakfast.com').save(flush: true)
+            def newteam = new Team(username: 'newteam', password: 'te.am', mail: 'newteam@universal-breakfast.com', enabled: true).save(flush: true)
             TeamRole.create(newteam, roleUser, true)
         }
     }
