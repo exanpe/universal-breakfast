@@ -5,7 +5,6 @@ import fr.exanpe.universal.breakfast.domain.Team
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.spock.IntegrationSpec
 import spock.lang.Shared
-import spock.lang.Unroll
 
 /**
  *
@@ -18,8 +17,8 @@ class MemberServiceIntegrationSpec extends IntegrationSpec {
     def team, team2, mem, mem2, mem3;
 
     def setup() {
-        team = new Team(username: 'team', password: 'te.am', mail: 'team@universal-breakfast.com', enabled : true).save(flush: true)
-        team2 = new Team(username: 'team2', password: 'te.am', mail: 'team2@universal-breakfast.com', enabled : true).save(flush: true)
+        team = new Team(username: 'team_', password: 'te.am', mail: 'team_@universal-breakfast.com', enabled : true).save(flush: true)
+        team2 = new Team(username: 'team_2', password: 'te.am', mail: 'team_2@universal-breakfast.com', enabled : true).save(flush: true)
 
         mem = new Member(name : "Andrew", mail: "andrew@universal-breakfast.com")
         mem2 = new Member(name : "Josh", mail: "josh@universal-breakfast.com")

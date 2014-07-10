@@ -17,7 +17,7 @@ class HistoryServiceIntegrationSpec extends IntegrationSpec {
     def team;
 
     def setup() {
-        team = new Team(username: 'team', password: 'te.am', mail: 'team@universal-breakfast.com', enabled : true).save(flush: true)
+        team = new Team(username: 'team7', password: 'te.am', mail: 'team7@universal-breakfast.com', enabled : true).save(flush: true)
 
         def mem = new Member(name : "Andrew", mail: "andrew@universal-breakfast.com")
         def mem2 = new Member(name : "Brian", mail: "brian@universal-breakfast.com")

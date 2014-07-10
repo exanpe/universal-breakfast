@@ -144,7 +144,7 @@ environments {
 
     test{
         grails.mail.disabled=true
-        grails.serverURL = "http://localhost:8080"
+        grails.serverURL = "http://www.ub-test.com"
         ub.security.salt = "salt"//just a development value
     }
 

@@ -68,16 +68,16 @@ class UbServiceSpec extends IntegrationSpec {
             Member.findByName("nom 2").preparing == true
         }
 
-        Team.get(1).lastPrepare.clearTime() == new Date().clearTime()
-        Team.get(1).workflowState == WorkflowState.PREPARE
+        Team.findByUsernameCI("user").get().lastPrepare.clearTime() == new Date().clearTime()
+        Team.findByUsernameCI("user").get().workflowState == WorkflowState.PREPARE
     }
 
     void "test complete"() {
         when :
         //index 1 is "nom 2" (actually, index 1 is the second element)
         ubService.complete(new Date().minus(1),
-                ubService.getMembersByIndex([1]),
-                ubService.getMembersByIndex([0,1,2,4]))
+                ubService.getMembersByIndexActive([1]),
+                ubService.getMembersByIndexActive([0,1,2,4]))
 
         then :
         //nom 2 is supplier

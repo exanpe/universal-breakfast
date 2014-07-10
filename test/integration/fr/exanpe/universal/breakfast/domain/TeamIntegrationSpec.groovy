@@ -13,15 +13,19 @@ class TeamIntegrationSpec extends IntegrationSpec {
     def cleanup() {
     }
 
+    /**
+     * username is lowercased in database
+     */
     void "test de la récupération par username case-insensitive"() {
         setup :
         new Team(username: "uSer", password: "pass", mail: "test@mail.com").save(flush : true);
 
         expect :
         Team.findByUsername("UseR") == null;
-        Team.findByUsername("uSer") != null;
+        Team.findByUsername("user") != null;
         Team.findByUsernameCI("UseR0").get() == null ;
         Team.findByUsernameCI("UseR").get() != null;
+        Team.findByUsernameCI("user").get() != null;
     }
 
     void "test de la récupération par mail case-insensitive"() {
