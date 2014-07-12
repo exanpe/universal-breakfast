@@ -118,6 +118,15 @@ grails {
 }
 grails.mail.default.from = ub.mail
 
+grails.cache.config={
+    cache{
+        name 'jsmessages'
+        eternal true
+        overflowToDisk false
+        maxElementsInMemory 1000
+    }
+}
+
 templates = {
     props{
         propGlobal id:"url", templateKey : "_URL_", script : {Holders.config.grails.serverURL}
@@ -150,8 +159,7 @@ environments {
 
     production {
         grails.logging.jul.usebridge = false
-        //TODO JMX change with final domain
-        grails.serverURL = "http://ub-exanpe.rhcloud.com"
+        grails.serverURL = "http://www.universal-breakfast.com"
 
         // Session monitoring conf
         ub.session.max.count = 100
@@ -195,6 +203,9 @@ log4j = {
            'net.sf.ehcache.hibernate'
    // debug    'org.springframework.security'
 
+    root{
+        error 'stdout'
+    }
 }
 
 // LESS compiler
