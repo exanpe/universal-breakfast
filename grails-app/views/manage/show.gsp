@@ -16,7 +16,7 @@
     <div class="form-horizontal ub-view">
         <div class="form-group">
             <label class="control-label col-xs-4">
-                <g:message code="ub.manage.member.name.label"/>
+                <g:message code="member.name.label"/>
             </label>
             <div class="col-xs-6 form-control-static">
                 ${memberInstance?.name}
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label class="control-label col-xs-4">
-                <g:message code="ub.manage.member.mail.label"/>
+                <g:message code="member.mail.label"/>
             </label>
             <div class="col-xs-6 form-control-static">
                 ${memberInstance?.mail}
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label class="control-label col-xs-4">
-                <g:message code="ub.manage.member.active.label"/>
+                <g:message code="member.active.label"/>
             </label>
             <div class="col-xs-6 form-control-static">
                 <i class="fa fa-lg ${memberInstance?.active ? 'fa-check' : '' }"></i>
