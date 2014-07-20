@@ -105,7 +105,7 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 ub.template.mail.prepare = "mails/prepareMail.html"
 ub.template.mail.gathering = "mails/gatheringMail.html"
 
-ub.mail="exanpe@gmail.com"
+ub.mail="universal.breakfast@gmail.com"
 ub.github="https://github.com/exanpe/universal-breakfast"
 
 grails {
