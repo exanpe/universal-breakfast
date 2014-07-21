@@ -7,8 +7,11 @@ import org.codehaus.groovy.grails.context.support.PluginAwareResourceBundleMessa
  */
 class ExtendedPluginAwareResourceBundleMessageSource extends PluginAwareResourceBundleMessageSource {
     Map<String, String> listMessageCodes(Locale locale) {
+        Properties merged = new Properties();
         Properties properties = getMergedProperties(locale).properties
         Properties pluginProperties = getMergedPluginProperties(locale).properties
-        return properties.plus(pluginProperties)
+        merged.putAll(properties)
+        merged.putAll(pluginProperties)
+        return merged
     }
 }
