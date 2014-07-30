@@ -13,7 +13,8 @@
 
 
 <g:if test="${total == 0}">
-    ${message(code : 'ub.manage.members.empty')}
+    ${message(code : 'ub.manage.members.empty')} <br /><br />
+    <g:link class="btn btn-default action" action="create"><i class="fa fa-plus fa-inverse"></i>&nbsp;&nbsp;<g:message code="ub.manage.members.add" /></g:link>
 </g:if>
 <g:else>
 
