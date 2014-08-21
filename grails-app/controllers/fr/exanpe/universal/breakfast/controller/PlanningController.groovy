@@ -9,8 +9,8 @@ class PlanningController {
         if(params.teamName){
             Team team = Team.findByUsernameCI(params.teamName).get();
 
-            if(!team.configuration.planningEnabled){
-                return;
+            if(!team?.configuration?.planningEnabled){
+                return [noresult : true];
             }
 
             def members = Member.getListOrdered(team).list();

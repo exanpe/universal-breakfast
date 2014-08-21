@@ -21,6 +21,12 @@
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2">
 
+                <g:if test="${noresult == true}">
+                    <div class="alert alert-danger">
+                        <g:message code="ub.planning.team.noresult"/>
+                    </div>
+                </g:if>
+
                 <g:form class="form form-horizontal" action="index">
                     <div class="form-group">
                         <label for="teamName" class="control-label col-xs-4">
