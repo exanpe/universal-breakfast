@@ -287,7 +287,6 @@ blockquote p {
 
 .carousel {
   height: 630px;
-  background: url("../images/bg/jave-cafe-food-30144.jpg") no-repeat ;
 
   .sign-form {
     background-color: @default-dark-color;
@@ -594,20 +593,47 @@ blockquote p {
 
 @media (max-width: 767px) {
 
+  .navbar-inverse .navbar-brand {
+    font-size: 18px;
+  }
+
   .carousel {
-    height: 380px;
+    height: 500px;
   }
 
   .carousel-caption {
-    top: 4%;
+    top: 0px;
+    left: 15px;
+    right: 15px;
+    padding-top: 0px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    .button {
+      font-size: 12px;
+      margin: 10px 10px 0 0;
+      padding: 5px 10px;
+    }
+
   }
 
   .carousel-control.left i, .carousel-control.right i {
     top: 170px;
   }
 
+  .section, .section-colored {
+    padding: 10px 0;
+  }
+
   .section-colored.home h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .btn-lg, .btn-group-lg > .btn {
+    padding: 5px;
   }
 
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
@@ -630,6 +656,11 @@ blockquote p {
     width: 65%;
   }
 
+  label {
+    font-size: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .pagination{
