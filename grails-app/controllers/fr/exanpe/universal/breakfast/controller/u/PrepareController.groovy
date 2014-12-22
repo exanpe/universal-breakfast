@@ -52,7 +52,7 @@ class PrepareCommand {
     }
 
     static constraints = {
-        date blank: false, nullable: false, min: new Date().clearTime()
+        date blank: false, nullable: false
         suppliers nullable: false
     }
 }
