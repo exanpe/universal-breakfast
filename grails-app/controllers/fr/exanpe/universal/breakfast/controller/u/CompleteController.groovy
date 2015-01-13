@@ -68,7 +68,7 @@ class CompleteCommand {
     }
 
     static constraints = {
-        date blank: false, nullable: false, max: new Date().clearTime().plus(1)
+        date blank: false, nullable: false
         suppliers nullable: false
         attendees nullable: false
     }
