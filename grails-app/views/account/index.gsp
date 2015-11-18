@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for='password' class="control-label col-xs-4">
                     <ub:required>
-                        <g:message code="ub.register.password.label"/>
+                        <g:message code="registerCommand.password.label"/>
                     </ub:required>
                 </label>
                 <div class="col-xs-4">
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label for='password2' class="control-label col-xs-4">
                     <ub:required>
-                        <g:message code="ub.register.confirm.password.label"/>
+                        <g:message code="registerCommand.password2.label"/>
                     </ub:required>
                 </label>
                 <div class="col-xs-4">
