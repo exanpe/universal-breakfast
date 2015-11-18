@@ -42,7 +42,7 @@
             <!-- Alternate CSS classes for the rows. -->
             <tr>
                 <td><g:link controller="manage" action="show" id="${m.id}">${m.name}</g:link></td>
-                <td>${i + 1}</td>
+                <td>${i + (params.offset?params.offset.toInteger():0) + 1}</td>
                 <td><g:formatDate date="${m.lastBreakfast}"/></td>
                 <td>
                     <g:if test="${m.active}">

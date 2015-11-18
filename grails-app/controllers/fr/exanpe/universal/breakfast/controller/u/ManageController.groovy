@@ -5,21 +5,19 @@ import fr.exanpe.universal.breakfast.domain.Team
 import grails.transaction.Transactional
 import org.springframework.security.core.context.SecurityContextHolder
 
-import static org.springframework.http.HttpStatus.CREATED
-import static org.springframework.http.HttpStatus.NOT_FOUND
-import static org.springframework.http.HttpStatus.NO_CONTENT
-import static org.springframework.http.HttpStatus.OK
+import static org.springframework.http.HttpStatus.*
 
 class ManageController {
 
     def ubService
     def springSecurityService
     def memberService
+    def grailsApplication
 
     def index() {
         def team = Team.get(springSecurityService.currentUser.id)
-        def members = Member.getListOrdered(team).list()
-        return [total: members.size, members : members]
+        def members = Member.getListOrdered(team).list(max : grailsApplication.config.ub.paginate.items.perPage, offset : params.offset?:0)
+        return [total: members.totalCount, members : members]
     }
 
     def show(Member memberInstance) {
