@@ -52,26 +52,27 @@
         </div>
 
         <div class="main">
+            <div class="container-fluid">
+                <div class="row">
 
-            <div class="row">
+                    <!-- Left Sidebar -->
+                    <div class="col-md-3 col-sm-3 sidebar">
+                        <g:render template="/menu/sidebar" />
+                    </div>
 
-                <!-- Left Sidebar -->
-                <div class="col-md-3 col-sm-3 sidebar">
-                    <g:render template="/menu/sidebar" />
+                    <!-- Main content -->
+                    <div class="content col-md-9 col-sm-9">
+
+                        <g:if test='${flash.message}'>
+                            <div class='alert alert-success'>
+                                <g:message code="${flash.message}" />
+                            </div>
+                        </g:if>
+
+                        <g:layoutBody/>
+                    </div>
+
                 </div>
-
-                <!-- Main content -->
-                <div class="content col-md-9 col-sm-9">
-
-                    <g:if test='${flash.message}'>
-                        <div class='alert alert-success'>
-                            <g:message code="${flash.message}" />
-                        </div>
-                    </g:if>
-
-		            <g:layoutBody/>
-                </div>
-
             </div>
         </div>
 
