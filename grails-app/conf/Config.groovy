@@ -134,9 +134,10 @@ templates = {
         prop id:"breakfastdate", templateKey : "_BREAKFAST_DATE_", script : {(it && it["breakfastdate"])?it["breakfastdate"]:""}
         prop id:"message", templateKey : "_MESSAGE_", script : {(it && it["message"])?it["message"]:""}
         prop id:"location", templateKey : "_LOCATION_", script : {(it && it["location"])?it["location"]:""}
+        prop id:"suppliers", templateKey : "_SUPPLIERS_", script: {(it && it["suppliers"])?it["suppliers"]:""}
     }
 
-    template id:"prepare", props : ["breakfastdate", "message"]
+    template id:"prepare", props : ["breakfastdate", "message", "suppliers"]
     template id:"gather", props : ["location", "message"]
 }
 
@@ -149,6 +150,18 @@ environments {
         ub.session.max.count = 5
         grails.serverURL = "http://localhost:8080"
         ub.security.salt = "salt"//just a development value
+
+        grails {
+            //https://nilhcem.github.io/FakeSMTP/download.html
+            mail {
+                host = "localhost"
+                port = 25
+                username = ub.mail
+                props = ["mail.smtp.auth":"false",
+                         "mail.smtp.socketFactory.port":"25"]
+
+            }
+        }
     }
 
     test{

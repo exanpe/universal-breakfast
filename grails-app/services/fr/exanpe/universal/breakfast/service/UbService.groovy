@@ -68,6 +68,7 @@ class UbService {
             def model = [:]
             model["breakfastdate"] = FastDateFormat.getInstance(Holders.applicationContext.getMessage("default.date.format", null, LocaleContextHolder.locale)).format(date)
             model["message"] = message?:""
+            model["suppliers"] = suppliers.collect {it.name}.join(", ")
 
             suppliers.retainAll({StringUtils.isNotEmpty(it.mail)})
             def mails = suppliers.collect {it.mail}
