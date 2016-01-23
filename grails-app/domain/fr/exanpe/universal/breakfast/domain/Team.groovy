@@ -86,6 +86,13 @@ class Team {
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
     }
+
+    List<Member> getMembersPreparing(){
+        Member.findAll {
+            eq "team", this
+            eq "preparing", true
+        }
+    }
 }
 
 enum WorkflowState {

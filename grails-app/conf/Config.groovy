@@ -138,7 +138,7 @@ templates = {
     }
 
     template id:"prepare", props : ["breakfastdate", "message", "suppliers"]
-    template id:"gather", props : ["location", "message"]
+    template id:"gather", props : ["location", "message", "suppliers"]
 }
 
 environments {

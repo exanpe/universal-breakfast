@@ -106,6 +106,7 @@ class UbService {
             def model = [:]
             model["message"] = message?:""
             model["location"] = location?:""
+            model["suppliers"] = t.membersPreparing.collect {it.name}.join(", ")
 
             def mails = Member.findAll {
                 eq "team", t
