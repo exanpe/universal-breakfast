@@ -32,7 +32,11 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            jndiName = "java:comp/env/jdbc/MySQLDS"
+            String host = System.getenv('MYSQL_SERVICE_HOST')
+            String port = System.getenv('MYSQL_SERVICE_PORT')
+            url = "jdbc:mysql://$host:$port/ub"
+            username = System.getenv('MYSQL_USER')
+            password = System.getenv('MYSQL_PASSWORD')
             driverClassName = "com.mysql.jdbc.Driver"
             dialect = "org.hibernate.dialect.MySQL5Dialect"
         }

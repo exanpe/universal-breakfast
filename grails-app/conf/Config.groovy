@@ -184,7 +184,7 @@ environments {
                 host = "smtp.gmail.com"
                 port = 465
                 username = ub.mail
-                // password = "OVERWRITE"
+                password = System.getenv('MAIL_PASSWORD')
                 props = ["mail.smtp.auth":"true",
                         "mail.smtp.socketFactory.port":"465",
                         "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
