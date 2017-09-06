@@ -13,12 +13,18 @@ SETUP OPENSHIFT V3 PROD (once and for all)
 * ```$ oc env dc universal-breakfast MYSQL_USER="xxxx"``̀
 * ```$ oc env dc universal-breakfast MYSQL_PASSWORD="xxxx"``̀
 * ```$ oc env dc universal-breakfast MAIL_PASSWORD="xxxx"``̀
-
+* ```$ oc env dc universal-breakfast JAVA_OPTIONS="-Xms512m -Xmx512m"``̀
+#### Setup database
+* ```$ mv <ub.sql> tmp/```
+* ```$ oc get pods```
+* ```$ oc rsync tmp/ <mysql_pod_name>:/var/lib/mysql/data```
+* ```$ oc rsh <mysql_pod>```
+* ```$ cd /var/lib/mysql/data/tmp/;mysql -u root;use ub;source ub.sql```
 
 BUILD
 -----
 
 * ```$ sdk install grails 2.3.11```
 * ```$ grails war -Dgrails.env=production```
-* ```$ oc start-build universal-breakfast-binary --from-file=target/universal-breakfast.war```
+* ```$ oc start-build universal-breakfast-binary --from-file=target/ROOT.war```
 * Access to : http://universal-breakfast-universal-breakfast.a3c1.starter-us-west-1.openshiftapps.com/universal-breakfast/
