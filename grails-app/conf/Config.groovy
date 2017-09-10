@@ -178,6 +178,7 @@ environments {
         ub.session.max.count = 100
 
         //ub.security.salt = "OVERWRITE"
+        ub.security.salt = System.getenv("UB_SALT")
 
         grails {
             mail {

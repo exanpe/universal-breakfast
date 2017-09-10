@@ -13,6 +13,7 @@ SETUP OPENSHIFT V3 PROD (once and for all)
 * ```$ oc env dc universal-breakfast MYSQL_USER="xxxx"``̀
 * ```$ oc env dc universal-breakfast MYSQL_PASSWORD="xxxx"``̀
 * ```$ oc env dc universal-breakfast MAIL_PASSWORD="xxxx"``̀
+* ```$ oc env dc universal-breakfast UB_SALT="xxxx"``̀
 * ```$ oc env dc universal-breakfast JAVA_OPTIONS="-Xms512m -Xmx512m"``̀
 #### Setup database
 * ```$ mv <ub.sql> tmp/```
