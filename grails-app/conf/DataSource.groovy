@@ -31,6 +31,7 @@ environments {
     }
     production {
         dataSource {
+            pooled = true
             dbCreate = "update"
             String host = System.getenv('MYSQL_SERVICE_HOST')
             String port = System.getenv('MYSQL_SERVICE_PORT')
@@ -39,6 +40,22 @@ environments {
             password = System.getenv('MYSQL_PASSWORD')
             driverClassName = "com.mysql.jdbc.Driver"
             dialect = "org.hibernate.dialect.MySQL5Dialect"
+            properties {
+                initialSize = 5
+                maxActive = 50
+                minIdle = 5
+                maxIdle = 25
+                maxWait = 10000
+                maxAge = 10 * 60000
+                timeBetweenEvictionRunsMillis = 5000
+                minEvictableIdleTimeMillis = 60000
+                validationQuery = "SELECT 1"
+                validationQueryTimeout = 3
+                validationInterval = 15000
+                testOnBorrow = true
+                testWhileIdle = true
+                testOnReturn = false
+            }
         }
     }
 }
